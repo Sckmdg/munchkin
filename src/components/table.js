@@ -10,7 +10,7 @@ class Table extends Component {
 }
 
 Table.propTypes = {
-
+    table: PropTypes.object.isRequired
 };
 
 export default Canvas
