@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
-import {table} from './table';
+import {startGame} from './table';
 
 export default combineReducers({
-    table
+    startGame
 })

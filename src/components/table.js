@@ -1,19 +1,17 @@
-import React, {PropTypes, Component} from 'react';
+import React, {Component} from 'react';
 class Table extends Component {
     componentDidMount() {
         this.props.startGame('hi');
     }
 
     render() {
+        console.log(this);
         return (
             <div className='col-md-12'>
+
             </div>
         );
     }
 }
 
-Table.propTypes = {
-    table: PropTypes.object.isRequired
-};
-
-export default Canvas
+export default Table

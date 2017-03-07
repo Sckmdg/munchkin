@@ -3,7 +3,7 @@ import {
     initialState
 } from '../constants/constants';
 
-export function startGame(state = initialState) {
+export function startGame(state = initialState, action) {
     switch (action.type) {
         case START_GAME:
             return {...state, something: action.payload};
