@@ -1,5 +1,8 @@
 import React, {PropTypes, Component} from 'react';
 class Table extends Component {
+    componentDidMount() {
+        this.props.startGame('hi');
+    }
 
     render() {
         return (

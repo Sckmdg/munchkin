@@ -12,7 +12,7 @@ class App extends Component {
         return (
             <div className='app'>
                     <h2 className='text-center'>Munchkin</h2>
-                <Table start={table} />
+                <Table startGame={startGame} />
             </div>
         )
     }
@@ -32,7 +32,7 @@ function mapDispatchToProps(dispatch) {
 
 App.propTypes = {
     table: PropTypes.object.isRequired,
-    //actions: PropTypes.object.isRequired
+    startGame: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
