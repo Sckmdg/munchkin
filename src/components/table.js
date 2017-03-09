@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
 import img from '../img/img.jpg';
 class Table extends Component {
-
+    /**
+     * Here we taking array from door cards and take 4 random nonrepeatable cards
+     * @param item - it's array from door cards
+     * @returns {Array} - returns 4 card array, also takes away cards from original array
+     * @constructor
+     */
     HandDoors = (item) => {
         let myDoors = [];
         for (let i =0; i < 4; i++){
@@ -13,6 +18,12 @@ class Table extends Component {
         return myDoors
     };
 
+    /**
+     * Here we taking array from treasure cards and take 4 random nonrepeatable cards
+     * @param item - it's array from treasure cards
+     * @returns {Array} - returns 4 card array, also takes away cards from original array
+     * @constructor
+     */
     HandTreasure = (item) => {
         let myTreasure = [];
         for (let i =0; i < 4; i++){
@@ -24,10 +35,13 @@ class Table extends Component {
         return myTreasure
     };
 
+    /**
+     * Here we give out 8 cards and rendering table
+     * @returns {XML}
+     */
     render() {
         const doorCards = this.props.cards.startGame.doors;
         let myDoors = this.HandDoors(doorCards);
-
         const doors = myDoors.map(function(item) {
             let curse = (item.curse == true) ? 'Проклятие!' : '';
             let lvl = (item.lvlMstr == 0) ? '' : 'Уровень ' + item.lvlMstr;
