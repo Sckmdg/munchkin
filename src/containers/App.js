@@ -9,10 +9,11 @@ import Table from '../components/table';
 class App extends Component {
 
     render() {
+        const {cards} = this.props;
         return (
             <div className='app'>
                     <h2 className='text-center'>Munchkin</h2>
-                <Table startGame={this.props.actions.startGame} />
+                <Table cards={cards} />
             </div>
         )
     }
@@ -20,7 +21,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
     return {
-        startGame: state.startGame
+        cards: state
     }
 }
 
@@ -31,7 +32,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 App.propTypes = {
-    startGame: PropTypes.object.isRequired
+    cards: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

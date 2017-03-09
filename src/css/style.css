@@ -1,0 +1,17 @@
+.singleCard{
+    border: 1px solid;
+    margin: 20px;
+    height: 500px;
+}
+
+.singleCard img{
+    margin: 0 0 10px -7px;
+}
+
+#left {
+    float: left;
+}
+
+#right{
+    float: right;
+}
