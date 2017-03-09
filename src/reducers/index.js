@@ -1,6 +1,8 @@
 import {combineReducers} from 'redux';
-import {startGame} from './table';
+import {HandCards} from './handCards';
+import {Player} from './player';
 
 export default combineReducers({
-    startGame
+    HandCards,
+    Player
 })

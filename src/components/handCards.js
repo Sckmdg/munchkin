@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import img from '../img/img.jpg';
-class Table extends Component {
+class HandCards extends Component {
     /**
      * Here we taking array from door cards and take 4 random nonrepeatable cards
      * @param item - it's array from door cards
@@ -40,7 +39,7 @@ class Table extends Component {
      * @returns {XML}
      */
     render() {
-        const doorCards = this.props.cards.startGame.doors;
+        const doorCards = this.props.cards.HandCards.doors;
         let myDoors = this.HandDoors(doorCards);
         const doors = myDoors.map(function(item) {
             let curse = (item.curse == true) ? 'Проклятие!' : '';
@@ -60,15 +59,16 @@ class Table extends Component {
             );
         });
 
-        const treasureCards = this.props.cards.startGame.treasures;
+        const treasureCards = this.props.cards.HandCards.treasures;
         let myTreasure = this.HandTreasure(treasureCards);
         const treasures = myTreasure.map(function(item) {
             let bonus = (item.bonus == 0) ? '' : '+' + item.bonus + ' Бонус';
             let gold = (item.golds == 0) ? '' : item.golds + ' голдов';
+            let useOnly = (item.useOnly == null || item.useOnly == '') ? '' : 'Применяется Только Классом ' + item.useOnly;
           return(
               <div className='col-md-3 singleCard' key={item.id}>
                   <h4 className='text-center'>{bonus}</h4>
-                  <p className='text-center'>{item.useOnly}</p>
+                  <p className='text-center'>{useOnly}</p>
                   <h4 className='text-center'>{item.name}</h4>
                   <img src='/static/src/img/img.jpg' alt={item.name}/>
                   <p>{item.description}</p>
@@ -79,9 +79,9 @@ class Table extends Component {
         });
 
         return (
-                <div className='blabla'>{doors}{treasures}</div>
+                <div className='col-md-12'>{doors}{treasures}</div>
         )
     }
 }
 
-export default Table
+export default HandCards

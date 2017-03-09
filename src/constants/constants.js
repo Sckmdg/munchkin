@@ -1,5 +1,23 @@
 export const START_GAME = 'START_GAME';
 
+export const race = {
+    human: 'Человек',
+    dwarf: 'Дварф'
+};
+
+export const klass = {
+    sorcer: 'Волшебник',
+    cliric: 'Клирик',
+    none: 'Без класса'
+};
+
+export const player ={
+    gender: true,
+    lvl: 1,
+    race: race.human,
+    klass: klass.none
+};
+
 export const initialState = {
     doors: [
         {
@@ -9,7 +27,7 @@ export const initialState = {
             lvlUp: 0,
             lvlMstr: 0,
             race: '',
-            class: '',
+            klass: '',
             disaster: '',
             name: 'Расовый Коктейль',
             description: 'Можешь иметь две Расовые карты в комплекте - все радости и горести обеих Рас. Или возьми одну расу, получи все её преимущества и забудь о её недостатках (так, монстры ненавидящие Эльфов, не получат бонус в бою против полуэльфа). Карта теряется вместе с Расовой картой (картами).'
@@ -21,7 +39,7 @@ export const initialState = {
             lvlUp: 0,
             lvlMstr: 0,
             race: '',
-            class: '',
+            klass: '',
             disaster: '',
             name: 'Смена Расы',
             description: 'Если у тебя нет Расы это проклятие не действует. В противном случае, начинай прочесывать кучку сброса сверху донизу. Первая Раса, на которую наткнешься, заменяет твою текущую Расу(Расы). Если ты прочесал весь сброс, а Расы не нашел, ты просто теряешь текущую Расу(Расы).'
@@ -33,7 +51,7 @@ export const initialState = {
             lvlUp: 0,
             lvlMstr: 0,
             race: '',
-            class: '',
+            klass: '',
             disaster: 'small item -1',
             name: 'Утрата 1 Маленькой Шмотки',
             description: 'Выбери одну маленькую шмотку для сброса. Маленькая - это любая шмотка, на которой не написано, что она Большая.'
@@ -45,8 +63,8 @@ export const initialState = {
             lvlUp: 2,
             lvlMstr: 18,
             race: '',
-            class: '',
-            disaster: 'blablabla',
+            klass: '',
+            disaster: '',
             name: 'Кальмадзилла',
             description: 'Склизко! Эльфы в -4! Не преследует никого, чей Уровень 4 или ниже, за исключением Эльфов. Непотребство: хватает, сдавливает противными щупальцами и пожирает. Ты мертв. Вопросы, пожелания, высказывания?'
         },
@@ -57,8 +75,8 @@ export const initialState = {
             lvlUp: 0,
             lvlMstr: 0,
             race: '',
-            class: '',
-            disaster: 'blablabla',
+            klass: '',
+            disaster: '',
             name: '',
             description: 'Теряешь надетую Обувку.'
         },
@@ -68,9 +86,9 @@ export const initialState = {
             curse: false,
             lvlUp: 0,
             lvlMstr: 0,
-            race: '',
-            class: '',
-            disaster: 'blablabla',
+            race: race.dwarf,
+            klass: '',
+            disaster: '',
             name: 'Дварф',
             description: 'Можешь надеть любое число Больших шмоток. Можешь держать в <<руке>> 6 карт'
         },
@@ -81,8 +99,8 @@ export const initialState = {
             lvlUp: 0,
             lvlMstr: 0,
             race: '',
-            class: '',
-            disaster: 'blablabla',
+            klass: klass.cliric,
+            disaster: '',
             name: 'Клирик',
             description: 'Воскрешение: когда надо вытянуть карту лицом вверх, ты можешь вместо этого взять верхнюю карту из соответствующей кучи сброса. Затем ты должен сбрросить одну карту с <<руки>> Изгнание: можешь сбросить до 3х карт в бою против Андедов. Каждый сброс дает тебе +3 Бонус.'
         }
@@ -127,7 +145,7 @@ export const initialState = {
         {
             id: 4,
             bonus: 5,
-            useOnly: 'Применяется только Волшебником',
+            useOnly: klass.sorcer,
             name: 'Посох Напалма',
             description: '',
             type: '1 Рука',

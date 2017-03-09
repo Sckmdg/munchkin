@@ -5,15 +5,17 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import actions from '../actions/actions';
-import Table from '../components/table';
+import HandCards from '../components/handCards';
+import Player from '../components/player';
 class App extends Component {
 
     render() {
-        const {cards} = this.props;
+        const {cards, player} = this.props;
         return (
             <div className='app'>
-                    <h2 className='text-center'>Munchkin</h2>
-                <Table cards={cards} />
+                <h2 className='text-center'>Munchkin</h2>
+                <Player player={player}/>
+                <HandCards cards={cards}/>
             </div>
         )
     }
@@ -21,7 +23,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
     return {
-        cards: state
+        cards: state,
+        player: state
     }
 }
 
@@ -32,7 +35,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 App.propTypes = {
-    cards: PropTypes.object.isRequired
+    cards: PropTypes.object.isRequired,
+    player: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
