@@ -1,13 +1,34 @@
 import React, {Component} from 'react';
 import img from '../img/img.jpg';
 class Table extends Component {
-    /**
-     * Here we display our cards, how the will be look in future
-     * @returns {XML}
-     */
+
+    HandDoors = (item) => {
+        let myDoors = [];
+        for (let i =0; i < 4; i++){
+            let index = Math.floor(Math.random()*item.length);
+            let currentCard = item[index];
+            item.splice(index, 1);
+            myDoors = myDoors.concat(currentCard);
+        }
+        return myDoors
+    };
+
+    HandTreasure = (item) => {
+        let myTreasure = [];
+        for (let i =0; i < 4; i++){
+            let index = Math.floor(Math.random()*item.length);
+            let currentCard = item[index];
+            item.splice(index, 1);
+            myTreasure = myTreasure.concat(currentCard);
+        }
+        return myTreasure
+    };
+
     render() {
         const doorCards = this.props.cards.startGame.doors;
-        const doors = doorCards.map(function(item) {
+        let myDoors = this.HandDoors(doorCards);
+
+        const doors = myDoors.map(function(item) {
             let curse = (item.curse == true) ? 'Проклятие!' : '';
             let lvl = (item.lvlMstr == 0) ? '' : 'Уровень ' + item.lvlMstr;
             let lvlUp = (item.lvlUp == 0) ? '' : item.lvlUp + ' Уровня';
@@ -24,8 +45,10 @@ class Table extends Component {
                     </div>
             );
         });
+
         const treasureCards = this.props.cards.startGame.treasures;
-        const treasures = treasureCards.map(function(item) {
+        let myTreasure = this.HandTreasure(treasureCards);
+        const treasures = myTreasure.map(function(item) {
             let bonus = (item.bonus == 0) ? '' : '+' + item.bonus + ' Бонус';
             let gold = (item.golds == 0) ? '' : item.golds + ' голдов';
           return(
@@ -40,6 +63,7 @@ class Table extends Component {
               </div>
           );
         });
+
         return (
                 <div className='blabla'>{doors}{treasures}</div>
         )
