@@ -1,6 +1,7 @@
 import {
     GIVE_OUT,
-    PICK_CARD
+    PICK_CARD,
+    PUT_ON
 } from '../constants/constants';
 
 export function giveOut(door, treasure) {
@@ -22,4 +23,13 @@ export function pickCard(card) {
     }
 }
 
-export default {giveOut, pickCard}
+export function putOn(card) {
+    return (dispatch) => {
+        dispatch({
+            type: PUT_ON,
+            payload: card
+        })
+    }
+}
+
+export default {giveOut, pickCard, putOn}

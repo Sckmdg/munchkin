@@ -2,7 +2,12 @@ import React, {PropTypes, Component} from 'react';
 class CardTreasure extends Component {
 
     static propTypes = {
-        card: PropTypes.object.isRequired
+        card: PropTypes.object.isRequired,
+        putOn: PropTypes.func.isRequired
+    };
+
+    put = () =>{
+        this.props.putOn(this.props.card);
     };
 
     render () {
@@ -20,6 +25,7 @@ class CardTreasure extends Component {
                 <p>{card.description}</p>
                 <div className='text-left' id='left'>{card.type}</div>
                 <div className='text-right' id='right'>{gold}</div>
+                <button onClick={this.put}>put on</button>
             </div>
         )
     }

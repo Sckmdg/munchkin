@@ -1,13 +1,7 @@
 import {
-    initialState,
-    PICK_CARD
+    initialState
 } from '../constants/constants';
 
-export function HandCards(state = initialState, action) {
-    switch (action.type) {
-        case PICK_CARD:
-            return{...state, doors: [...state.doors, action.payload]};
-
-    }
+export function HandCards(state = initialState) {
     return state
 }

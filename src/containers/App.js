@@ -21,6 +21,7 @@ class App extends Component {
                     cards={cards}
                     giveOut={this.props.actions.giveOut}
                     pickCard={this.props.actions.pickCard}
+                    putOn={this.props.actions.putOn}
                 />
             </div>
         )

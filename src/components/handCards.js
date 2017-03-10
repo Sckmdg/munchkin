@@ -69,7 +69,7 @@ class HandCards extends React.Component {
 
                 {
                     cards.Player.playerTreasureCards.map((card, key,) =>
-                        <CardTreasure key={key} card={card}/>
+                        <CardTreasure key={key} card={card} putOn={this.props.putOn}/>
                     )
                 }
             </div>
