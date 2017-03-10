@@ -55,12 +55,10 @@ class HandCards extends React.Component {
      * @returns {XML}
      */
 
-    Pick = ()=>{
-        console.log('asd');
+    Pick =(item) =>{
+        console.log(item);
+        //this.props.pickCard(item);
     };
-    // Pick = () =>{
-    //     console.log('you picked me');
-    // };
 
     render() {
         const {cards} = this.props;
@@ -71,7 +69,7 @@ class HandCards extends React.Component {
                 let lvlUp = (card.lvlUp == 0) ? '' : card.lvlUp + ' Уровня';
                 let treasure = (card.treasure == 0) ? '' : card.treasure + ' Сокровища ';
                 return (
-                    <div className='col-md-3 singleCard' key={key} onClick={this.Pick}>
+                    <div className='col-md-3 singleCard' key={key}>
                         <h4 className='text-center'>{curse}</h4>
                         <h4 className='text-center'>{lvl}</h4>
                         <h4 className='text-center'>{card.name}</h4>
@@ -79,6 +77,7 @@ class HandCards extends React.Component {
                         <p>{card.description}</p>
                         <div className='text-left' id='left'>{lvlUp}</div>
                         <div className='text-right' id='right'>{treasure}</div>
+                        <button onClick={this.Pick(card)}>Pick me</button>
                     </div>
                 );
             }
@@ -87,7 +86,7 @@ class HandCards extends React.Component {
                 let gold = (card.golds == 0) ? '' : card.golds + ' голдов';
                 let useOnly = (card.useOnly == null || card.useOnly == '') ? '' : 'Применяется Только Классом ' + card.useOnly;
                 return (
-                    <div className='col-md-3 singleCard' key={key} onClick={this.Pick}>
+                    <div className='col-md-3 singleCard' key={key}>
                         <h4 className='text-center'>{bonus}</h4>
                         <p className='text-center'>{useOnly}</p>
                         <h4 className='text-center'>{card.name}</h4>
@@ -95,6 +94,7 @@ class HandCards extends React.Component {
                         <p>{card.description}</p>
                         <div className='text-left' id='left'>{card.type}</div>
                         <div className='text-right' id='right'>{gold}</div>
+                        <button onClick={this.Pick(card)}>Pick me</button>
                     </div>
                 );
             }
