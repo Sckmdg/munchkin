@@ -1,7 +1,10 @@
 import React from 'react';
 
 class HandCards extends React.Component {
-
+    /**
+     * Here we composing our cards in deck and send to state
+     * @param props
+     */
     constructor(props) {
         super(props);
         const doorCards = this.props.cards.HandCards.doors;
@@ -51,9 +54,16 @@ class HandCards extends React.Component {
      * Here we give out 8 cards and rendering table
      * @returns {XML}
      */
+
+    Pick = ()=>{
+        console.log('asd');
+    };
+    // Pick = () =>{
+    //     console.log('you picked me');
+    // };
+
     render() {
         const {cards} = this.props;
-
         const doors = cards.Player.playerCards.map((card, key) => {
             if (card.door == true) {
                 let curse = (card.curse == true) ? 'Проклятие!' : '';
@@ -61,7 +71,7 @@ class HandCards extends React.Component {
                 let lvlUp = (card.lvlUp == 0) ? '' : card.lvlUp + ' Уровня';
                 let treasure = (card.treasure == 0) ? '' : card.treasure + ' Сокровища ';
                 return (
-                    <div className='col-md-3 singleCard' key={key}>
+                    <div className='col-md-3 singleCard' key={key} onClick={this.Pick}>
                         <h4 className='text-center'>{curse}</h4>
                         <h4 className='text-center'>{lvl}</h4>
                         <h4 className='text-center'>{card.name}</h4>
@@ -77,7 +87,7 @@ class HandCards extends React.Component {
                 let gold = (card.golds == 0) ? '' : card.golds + ' голдов';
                 let useOnly = (card.useOnly == null || card.useOnly == '') ? '' : 'Применяется Только Классом ' + card.useOnly;
                 return (
-                    <div className='col-md-3 singleCard' key={key}>
+                    <div className='col-md-3 singleCard' key={key} onClick={this.Pick}>
                         <h4 className='text-center'>{bonus}</h4>
                         <p className='text-center'>{useOnly}</p>
                         <h4 className='text-center'>{card.name}</h4>
@@ -92,6 +102,11 @@ class HandCards extends React.Component {
 
         return (
             <div className='col-md-12'>{doors}</div>
+            // <div>
+            //     {cards.Player.playerCards.map((card, key) =>
+            //         <div key ={key}>{card.name}</div>
+            //     )}
+            // </div>
         )
     }
 }

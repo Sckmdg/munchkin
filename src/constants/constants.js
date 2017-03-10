@@ -1,5 +1,5 @@
 export const GIVE_OUT = 'GIVE_OUT';
-export const PICK_DOOR = 'PICK_DOOR';
+export const PICK_CARD = 'PICK_CARD';
 
 export const race = {
     human: 'Человек',
@@ -26,7 +26,8 @@ export const player ={
     bonus: 0,
     race: race.human,
     klass: klass.none,
-    playerCards: []
+    playerCards: [],
+    playerInv: []
 };
 
 import img0 from '../img/img.jpg';

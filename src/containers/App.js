@@ -20,6 +20,7 @@ class App extends Component {
                 <HandCards
                     cards={cards}
                     giveOut={this.props.actions.giveOut}
+                    pickCard={this.props.actions.pickCard}
                 />
             </div>
         )
