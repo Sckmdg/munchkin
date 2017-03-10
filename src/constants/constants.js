@@ -26,7 +26,8 @@ export const player ={
     bonus: 0,
     race: race.human,
     klass: klass.none,
-    playerCards: [],
+    playerDoorCards: [],
+    playerTreasureCards: [],
     playerInv: []
 };
 

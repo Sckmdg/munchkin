@@ -3,11 +3,12 @@ import {
     PICK_CARD
 } from '../constants/constants';
 
-export function giveOut(card) {
+export function giveOut(door, treasure) {
     return (dispatch) => {
         dispatch({
             type: GIVE_OUT,
-            payload: card
+            door: door,
+            treasure: treasure
         })
     }
 }
