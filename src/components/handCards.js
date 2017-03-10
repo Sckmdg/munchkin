@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import img from '../img/img.jpg';
 class HandCards extends Component {
     /**
      * Here we taking array from door cards and take 4 random nonrepeatable cards
@@ -51,7 +52,7 @@ class HandCards extends Component {
                         <h4 className='text-center'>{curse}</h4>
                         <h4 className='text-center'>{lvl}</h4>
                         <h4 className='text-center'>{item.name}</h4>
-                        <img src='/static/src/img/img.jpg' alt={item.name}/>
+                        <img src={img} alt={item.name}/>
                         <p>{item.description}</p>
                         <div className='text-left' id='left'>{lvlUp}</div>
                         <div className='text-right' id='right'>{treasure}</div>
@@ -70,7 +71,7 @@ class HandCards extends Component {
                   <h4 className='text-center'>{bonus}</h4>
                   <p className='text-center'>{useOnly}</p>
                   <h4 className='text-center'>{item.name}</h4>
-                  <img src='/static/src/img/img.jpg' alt={item.name}/>
+                  <img src={img} alt={item.name}/>
                   <p>{item.description}</p>
                   <div className='text-left' id='left'>{item.type}</div>
                   <div className='text-right' id='right'>{gold}</div>
