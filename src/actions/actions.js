@@ -1,15 +1,14 @@
 import {
-    START_GAME
+    GIVE_OUT
 } from '../constants/constants';
 
-export function startGame(message) {
+export function giveOut(card) {
     return (dispatch) => {
         dispatch({
-            type: START_GAME,
-            payload: message
+            type: GIVE_OUT,
+            payload: card
         })
     }
 }
 
-
-export default {startGame}
+export default {giveOut}

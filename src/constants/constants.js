@@ -1,4 +1,5 @@
-export const START_GAME = 'START_GAME';
+export const GIVE_OUT = 'GIVE_OUT';
+export const PICK_DOOR = 'PICK_DOOR';
 
 export const race = {
     human: 'Человек',
@@ -11,17 +12,31 @@ export const klass = {
     none: 'Без класса'
 };
 
+export const itemType = {
+    oneHand: '1 рука',
+    twoHand: '2 руки Большая',
+    helm: 'Головняк',
+    armour: 'Броник',
+    boots: 'Обувка'
+};
+
 export const player ={
     gender: true,
     lvl: 1,
+    bonus: 0,
     race: race.human,
-    klass: klass.none
+    klass: klass.none,
+    playerCards: []
 };
+
+import img0 from '../img/img.jpg';
 
 export const initialState = {
     doors: [
         {
             id: 0,
+            door: true,
+            img: img0,
             treasure: 0,
             curse: false,
             lvlUp: 0,
@@ -34,6 +49,8 @@ export const initialState = {
         },
         {
             id: 1,
+            door: true,
+            img: img0,
             treasure: 0,
             curse: true,
             lvlUp: 0,
@@ -46,6 +63,8 @@ export const initialState = {
         },
         {
             id: 2,
+            door: true,
+            img: img0,
             treasure: 0,
             curse: true,
             lvlUp: 0,
@@ -58,6 +77,8 @@ export const initialState = {
         },
         {
             id: 3,
+            door: true,
+            img: img0,
             treasure: 4,
             curse: false,
             lvlUp: 2,
@@ -70,6 +91,8 @@ export const initialState = {
         },
         {
             id: 4,
+            door: true,
+            img: img0,
             treasure: 0,
             curse: true,
             lvlUp: 0,
@@ -82,6 +105,8 @@ export const initialState = {
         },
         {
             id: 5,
+            door: true,
+            img: img0,
             treasure: 0,
             curse: false,
             lvlUp: 0,
@@ -94,6 +119,8 @@ export const initialState = {
         },
         {
             id: 6,
+            door: true,
+            img: img0,
             treasure: 0,
             curse: false,
             lvlUp: 0,
@@ -108,6 +135,8 @@ export const initialState = {
     treasures: [
         {
             id: 0,
+            door: false,
+            img: img0,
             bonus: 0,
             useOnly: '',
             name: 'Меджик Мисайл!',
@@ -117,38 +146,46 @@ export const initialState = {
         },
         {
             id: 1,
+            door: false,
+            img: img0,
             bonus: 1,
             useOnly: '',
             name: 'Шлем Бесстрашия',
             description: '',
-            type: 'Головняк',
+            type: itemType.helm,
             golds: 200
         },
         {
             id: 2,
+            door: false,
+            img: img0,
             bonus: 1,
             useOnly: '',
             name: 'Кожаный Прикид',
             description: '',
-            type: 'Броник',
+            type: itemType.armour,
             golds: 200
         },
         {
             id: 3,
+            door: false,
+            img: img0,
             bonus: 3,
             useOnly: '',
             name: 'Бензопила Кровавого Расчленения',
             description: '',
-            type: '2 Руки Большая',
+            type: itemType.twoHand,
             golds: 600
         },
         {
             id: 4,
+            door: false,
+            img: img0,
             bonus: 5,
             useOnly: klass.sorcer,
             name: 'Посох Напалма',
             description: '',
-            type: '1 Рука',
+            type: itemType.oneHand,
             golds: 800
         }
     ]

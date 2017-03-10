@@ -1,5 +1,5 @@
 import {
-    initialState
+    initialState,
 } from '../constants/constants';
 
 export function HandCards(state = initialState) {

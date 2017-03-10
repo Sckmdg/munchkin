@@ -10,10 +10,11 @@ class Player extends Component {
      * @returns {XML}
      */
     render() {
+        let total = this.props.player.Player.lvl + this.props.player.Player.bonus;
         return (
             <div className='player'>
-                <p className='text-center'>Уровень игрока {this.props.player.Player.lvl}</p>
-                <p className='text-center'>Все бонусы, включая уровень {this.props.player.Player.lvl}</p>
+                <p className='text-center'>Уровень игрока {total}</p>
+                <p className='text-center'>Все бонусы, включая уровень {total}</p>
                 <div className='col-md-12'>
                     <div className='col-md-3 text-center inventory'>
                         <img src={helm}/>

@@ -14,8 +14,13 @@ class App extends Component {
         return (
             <div className='app'>
                 <h2 className='text-center'>Munchkin</h2>
-                <Player player={player}/>
-                <HandCards cards={cards}/>
+                <Player
+                    player={player}
+                />
+                <HandCards
+                    cards={cards}
+                    giveOut={this.props.actions.giveOut}
+                />
             </div>
         )
     }
@@ -36,7 +41,8 @@ function mapDispatchToProps(dispatch) {
 
 App.propTypes = {
     cards: PropTypes.object.isRequired,
-    player: PropTypes.object.isRequired
+    player: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
