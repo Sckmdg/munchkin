@@ -20,7 +20,6 @@ class CardTreasure extends Component {
                 <p>{card.description}</p>
                 <div className='text-left' id='left'>{card.type}</div>
                 <div className='text-right' id='right'>{gold}</div>
-                <button onClick={this.Pick}>click me</button>
             </div>
         )
     }

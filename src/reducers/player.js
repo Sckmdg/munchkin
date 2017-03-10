@@ -9,7 +9,7 @@ export function Player(state = player, action) {
         case GIVE_OUT:
             return {...state, playerDoorCards: action.door, playerTreasureCards: action.treasure};
         case PICK_CARD:
-            return{...state, playerInv: action.payload};
+            return{...state, playerInv: [...state.playerInv, action.payload]};
     }
     return state
 }
