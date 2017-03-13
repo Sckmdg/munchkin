@@ -1,6 +1,5 @@
 import React from 'react';
-import CardDoor from './cards/cardDoor';
-import CardTreasure from './cards/cardTreasure';
+import Card from './cards/card';
 
 class HandCards extends React.Component {
     /**
@@ -9,11 +8,9 @@ class HandCards extends React.Component {
      */
     constructor(props) {
         super(props);
-        const doorCards = this.props.cards.HandCards.doors;
-        let myDoors = this.HandDoors(doorCards);
-        const treasureCards = this.props.cards.HandCards.treasures;
-        let myTreasure = this.HandTreasure(treasureCards);
-        this.props.giveOut(myDoors, myTreasure);
+        const Cards = this.props.cards.HandCards;
+        let myShuffleCards = this.Shuffle(Cards);
+        this.props.giveOut(myShuffleCards);
     }
 
     /**
@@ -23,32 +20,35 @@ class HandCards extends React.Component {
      * @constructor
      */
 
-    HandDoors = (item) => {
-        let myDoors = [];
-        for (let i = 0; i < 4; i++) {
-            let index = Math.floor(Math.random() * item.length);
-            let currentCard = item[index];
-            item.splice(index, 1);
-            myDoors = myDoors.concat(currentCard);
-        }
-        return myDoors
-    };
+    Shuffle = (item) => {
+        let myCards = [];
 
-    /**
-     * Here we taking array from treasure cards and take 4 random nonrepeatable cards
-     * @param item - it's array from treasure cards
-     * @returns {Array} - returns 4 card array, also takes away cards from original array
-     * @constructor
-     */
-    HandTreasure = (item) => {
-        let myTreasure = [];
+        let myDoors = [];
+        let doors = item.filter((card) =>{
+            return card.door == true;
+        });
+        let sizeDoors = doors.length;
         for (let i = 0; i < 4; i++) {
-            let index = Math.floor(Math.random() * item.length);
-            let currentCard = item[index];
+            let index = Math.floor(Math.random() * sizeDoors);
+            let currentDoor = doors[index];
             item.splice(index, 1);
-            myTreasure = myTreasure.concat(currentCard);
+            myDoors = myDoors.concat(currentDoor);
         }
-        return myTreasure
+
+        let myTreasures = [];
+        let treasures = item.filter((card) =>{
+           return card.door == false;
+        });
+        let sizeTreasures = treasures.length;
+        for (let i = 0; i < 4; i++) {
+            let index = Math.floor(Math.random() * sizeTreasures);
+            let currentTreasure = treasures[index];
+            item.splice(index, 1);
+            myTreasures = myTreasures.concat(currentTreasure);
+        }
+
+        myCards = myCards.concat(myDoors, myTreasures);
+        return myCards;
     };
 
     /**
@@ -58,18 +58,11 @@ class HandCards extends React.Component {
 
     render() {
         const {cards} = this.props;
-
         return (
             <div className='col-md-12'>
                 {
-                    cards.Player.playerDoorCards.map((card, key,) =>
-                        <CardDoor key={key} card={card} pickCard={this.props.pickCard}/>
-                    )
-                }
-
-                {
-                    cards.Player.playerTreasureCards.map((card, key,) =>
-                        <CardTreasure key={key} card={card} putOn={this.props.putOn}/>
+                    cards.Player.playerHandCards.map((card, key) =>
+                        <Card key={key} card={card}/>
                     )
                 }
             </div>

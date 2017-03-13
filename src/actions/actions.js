@@ -4,12 +4,11 @@ import {
     PUT_ON
 } from '../constants/constants';
 
-export function giveOut(door, treasure) {
+export function giveOut(cards) {
     return (dispatch) => {
         dispatch({
             type: GIVE_OUT,
-            door: door,
-            treasure: treasure
+            payload: cards
         })
     }
 }
