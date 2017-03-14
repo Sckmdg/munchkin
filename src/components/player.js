@@ -10,10 +10,10 @@ class Player extends Component {
      * @returns {XML}
      */
     render() {
-        let total = this.props.player.Player.lvl + this.props.player.Player.bonus;
+        let total = this.props.player.Player.stats.lvl + this.props.player.Player.stats.bonus;
         return (
             <div className='player'>
-                <p className='text-center'>Уровень игрока {total}</p>
+                <p className='text-center'>Уровень игрока {this.props.player.Player.stats.lvl}</p>
                 <p className='text-center'>Все бонусы, включая уровень {total}</p>
                 <div className='col-md-12'>
                     <div className='col-md-3 text-center inventory'>
@@ -34,12 +34,12 @@ class Player extends Component {
                     <div className='col-md-6 spec text-center'>
                         <br/>
                         <p>Раса</p>
-                        <p>{this.props.player.Player.race}</p>
+                        <p>{this.props.player.Player.stats.race}</p>
                     </div>
                     <div className='col-md-6 spec text-center'>
                         <br/>
                         <p>Класс</p>
-                        <p>{this.props.player.Player.klass}</p>
+                        <p>{this.props.player.Player.stats.klass}</p>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 export const GIVE_OUT = 'GIVE_OUT';
 export const PICK_CARD = 'PICK_CARD';
 export const PUT_ON = 'PUT_ON';
+export const CUT = 'CUT';
 
 export const race = {
     human: 'Человек',
@@ -24,14 +25,18 @@ export const itemType = {
 };
 
 export const player = {
-    name: 'Rust',
-    gender: true,
-    lvl: 1,
-    bonus: 0,
-    race: race.human,
-    klass: klass.none,
-    playerHandCards: [],
-    playerInv: []
+    stats: {
+        name: 'Rust',
+        gender: true,
+        lvl: 1,
+        bonus: 0,
+        race: race.human,
+        klass: klass.none
+    },
+    cards: {
+        handCards: [],
+        inv: []
+    }
 };
 
 export const desk = {
@@ -39,29 +44,29 @@ export const desk = {
     turn: ''
 };
 
-import img0 from '../img/cards/Selection_001.png';
-import img1 from '../img/cards/Selection_002.png';
-import img2 from '../img/cards/Selection_003.png';
-import img3 from '../img/cards/Selection_004.png';
-import img4 from '../img/cards/Selection_005.png';
-import img5 from '../img/cards/Selection_006.png';
-import img6 from '../img/cards/Selection_007.png';
-import img7 from '../img/cards/Selection_008.png';
-import img8 from '../img/cards/Selection_009.png';
-import img9 from '../img/cards/Selection_010.png';
-import img10 from '../img/cards/Selection_011.png';
-import img11 from '../img/cards/Selection_012.png';
-import img12 from '../img/cards/Selection_013.png';
-import img13 from '../img/cards/Selection_014.png';
-import img14 from '../img/cards/Selection_015.png';
-import img15 from '../img/cards/Selection_016.png';
+import img1 from '../img/cards/Selection_001.png';
+import img2 from '../img/cards/Selection_002.png';
+import img3 from '../img/cards/Selection_003.png';
+import img4 from '../img/cards/Selection_004.png';
+import img5 from '../img/cards/Selection_005.png';
+import img6 from '../img/cards/Selection_006.png';
+import img7 from '../img/cards/Selection_007.png';
+import img8 from '../img/cards/Selection_008.png';
+import img9 from '../img/cards/Selection_009.png';
+import img10 from '../img/cards/Selection_010.png';
+import img11 from '../img/cards/Selection_011.png';
+import img12 from '../img/cards/Selection_012.png';
+import img13 from '../img/cards/Selection_013.png';
+import img14 from '../img/cards/Selection_014.png';
+import img15 from '../img/cards/Selection_015.png';
+import img16 from '../img/cards/Selection_016.png';
 
 
 export const initialState = [
     {
         id: 0,
         door: true,
-        img: img0,
+        img: img1,
         treasure: 1,
         curse: false,
         lvlUp: 1,
@@ -75,7 +80,7 @@ export const initialState = [
     {
         id: 1,
         door: true,
-        img: img1,
+        img: img2,
         treasure: 5,
         curse: false,
         lvlUp: 2,
@@ -89,7 +94,7 @@ export const initialState = [
     {
         id: 2,
         door: true,
-        img: img2,
+        img: img3,
         treasure: 0,
         curse: false,
         lvlUp: 0,
@@ -103,24 +108,9 @@ export const initialState = [
     {
         id: 3,
         door: true,
-        img: img3,
-        treasure: 0,
-        curse: false,
-        lvlUp: 0,
-        undead: false,
-        lvlMstr: 0,
-        bonusDisaster: '',
-        race: '',
-        klass: '',
-        disaster: '',
-        name: 'Кальмадзилла',
-    },
-    {
-        id: 4,
-        door: true,
         img: img4,
         treasure: 0,
-        curse: true,
+        curse: false,
         lvlUp: 0,
         undead: false,
         lvlMstr: 0,
@@ -130,11 +120,11 @@ export const initialState = [
         disaster: ''
     },
     {
-        id: 5,
+        id: 4,
         door: true,
         img: img5,
         treasure: 0,
-        curse: false,
+        curse: true,
         lvlUp: 0,
         undead: false,
         lvlMstr: 0,
@@ -144,7 +134,7 @@ export const initialState = [
         disaster: ''
     },
     {
-        id: 6,
+        id: 5,
         door: true,
         img: img6,
         treasure: 0,
@@ -155,20 +145,19 @@ export const initialState = [
         bonusDisaster: '',
         race: '',
         klass: klass.cliric,
-        disaster: '',
+        disaster: ''
     },
     {
-        id: 7,
+        id: 6,
         door: false,
         img: img7,
         bonus: 0,
-        escape: 2,
         useOnly: '',
         type: '',
         golds: 400
     },
     {
-        id: 8,
+        id: 7,
         door: false,
         img: img8,
         bonus: 0,
@@ -177,7 +166,7 @@ export const initialState = [
         golds: 1300
     },
     {
-        id: 9,
+        id: 8,
         door: false,
         img: img9,
         bonus: 1,
@@ -186,7 +175,7 @@ export const initialState = [
         golds: 0
     },
     {
-        id: 10,
+        id: 9,
         door: false,
         img: img10,
         bonus: 0,
@@ -195,16 +184,16 @@ export const initialState = [
         golds: 300
     },
     {
-        id: 11,
+        id: 10,
         door: false,
         img: img11,
-        bonus: 5,
+        bonus: 6,
         useOnly: klass.sorcer,
         type: itemType.oneHand,
         golds: 800
     },
     {
-        id: 12,
+        id: 11,
         door: false,
         img: img12,
         bonus: 3,
@@ -213,7 +202,7 @@ export const initialState = [
         golds: 400
     },
     {
-        id: 13,
+        id: 12,
         door: false,
         img: img13,
         bonus: 2,
@@ -222,7 +211,7 @@ export const initialState = [
         golds: 400
     },
     {
-        id: 14,
+        id: 13,
         door: false,
         img: img14,
         bonus: 3,
@@ -231,7 +220,7 @@ export const initialState = [
         golds: 400
     },
     {
-        id: 15,
+        id: 14,
         door: true,
         img: img15,
         treasure: 1,
@@ -239,9 +228,23 @@ export const initialState = [
         lvlUp: 1,
         undead: false,
         lvlMstr: 1,
-        bonusDisaster: 'elf',
+        bonusDisaster: '',
         race: '',
         klass: '',
-        disaster: 'ничего',
+        disaster: 'nothing',
+    },
+    {
+        id: 15,
+        door: true,
+        img: img16,
+        treasure: 1,
+        curse: false,
+        lvlUp: 1,
+        undead: true,
+        lvlMstr: 2,
+        bonusDisaster: '',
+        race: '',
+        klass: '',
+        disaster: 'something',
     }
 ];

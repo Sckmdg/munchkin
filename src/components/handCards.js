@@ -1,54 +1,49 @@
 import React from 'react';
 import Card from './cards/card';
+import _ from 'lodash';
 
 class HandCards extends React.Component {
     /**
-     * Here we composing our cards in deck and send to state
+     * Here we call function that shuffle and give out cards
      * @param props
      */
     constructor(props) {
         super(props);
         const Cards = this.props.cards.HandCards;
-        let myShuffleCards = this.Shuffle(Cards);
+        let myShuffleCards = this.GiveOut(Cards);
         this.props.giveOut(myShuffleCards);
     }
 
     /**
-     * Here we taking array from door cards and take 4 random nonrepeatable cards
-     * @param item - it's array from door cards
-     * @returns {Array} - returns 4 card array, also takes away cards from original array
+     * GiveOut - creating massive from 4 door and 4 treasure cards
+     * Giving this cards to state player and cutting from state cards
+     *
+     * @param item - original state from cards
+     * @returns {Array} - 8 cards
      * @constructor
      */
 
-    Shuffle = (item) => {
+    GiveOut = (item) => {
         let myCards = [];
 
-        let myDoors = [];
         let doors = item.filter((card) =>{
             return card.door == true;
         });
-        let sizeDoors = doors.length;
-        for (let i = 0; i < 4; i++) {
-            let index = Math.floor(Math.random() * sizeDoors);
-            let currentDoor = doors[index];
-            item.splice(index, 1);
-            myDoors = myDoors.concat(currentDoor);
-        }
-
-        let myTreasures = [];
         let treasures = item.filter((card) =>{
-           return card.door == false;
+            return card.door == false;
         });
-        let sizeTreasures = treasures.length;
-        for (let i = 0; i < 4; i++) {
-            let index = Math.floor(Math.random() * sizeTreasures);
-            let currentTreasure = treasures[index];
-            item.splice(index, 1);
-            myTreasures = myTreasures.concat(currentTreasure);
-        }
+
+        doors = _.shuffle(doors);
+        treasures = _.shuffle(treasures);
+
+        let myDoors = doors.slice(1, 5);
+        let myTreasures = treasures.slice(1, 5);
 
         myCards = myCards.concat(myDoors, myTreasures);
-        return myCards;
+        myCards.map((sending) =>{
+            this.props.cut(sending);
+        });
+        return myCards
     };
 
     /**
@@ -61,7 +56,7 @@ class HandCards extends React.Component {
         return (
             <div className='col-md-12'>
                 {
-                    cards.Player.playerHandCards.map((card, key) =>
+                    cards.Player.cards.handCards.map((card, key) =>
                         <Card key={key} card={card}/>
                     )
                 }
