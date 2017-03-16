@@ -18,6 +18,13 @@ class HandCards extends React.Component {
      * GiveOut - creating massive from 4 door and 4 treasure cards
      * Giving this cards to state player and cutting from state cards
      *
+     * doors - array of door cards from deck
+     * treasures - array of treasure cards from deck
+     *
+     * myDoors - array of 4 cards from doors
+     * myTreasures - array of 4 cards from treasures
+     * myCards - array of cards from myDoors + myTreasures
+     *
      * @param item - original state from cards
      * @returns {Array} - 8 cards
      * @constructor
@@ -41,7 +48,7 @@ class HandCards extends React.Component {
 
         myCards = myCards.concat(myDoors, myTreasures);
         myCards.map((sending) =>{
-            this.props.cut(sending);
+            this.props.cut(sending.id);
         });
         return myCards
     };
@@ -57,7 +64,7 @@ class HandCards extends React.Component {
             <div className='col-md-12'>
                 {
                     cards.Player.cards.handCards.map((card, key) =>
-                        <Card key={key} card={card}/>
+                        <Card key={key} card={card} putOn={this.props.putOn}/>
                     )
                 }
             </div>

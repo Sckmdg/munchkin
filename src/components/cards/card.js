@@ -5,11 +5,14 @@ class Card extends Component {
         card: PropTypes.object.isRequired
     };
 
+    Pick = () =>{
+        this.props.putOn(this.props.card);
+    };
+
     render (){
         const {card} = this.props;
-
         return (
-            <div className='col-md-3 singleCard'>
+            <div className='col-md-3 singleCard' onClick={this.Pick}>
                 <img src={card.img} alt={card.name}/>
             </div>
         );

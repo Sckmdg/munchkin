@@ -35,6 +35,7 @@ class App extends Component {
                     cards={cards}
                     giveOut={this.props.actions.giveOut}
                     cut={this.props.actions.cut}
+                    putOn={this.props.actions.putOn}
                 />
             </div>
         )

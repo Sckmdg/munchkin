@@ -1,5 +1,4 @@
 export const GIVE_OUT = 'GIVE_OUT';
-export const PICK_CARD = 'PICK_CARD';
 export const PUT_ON = 'PUT_ON';
 export const CUT = 'CUT';
 

@@ -1,22 +1,17 @@
 import {
     player,
     GIVE_OUT,
-    //PICK_CARD,
-    //PUT_ON
+    PUT_ON
 } from '../constants/constants';
 
 export function Player(state = player, action) {
     switch (action.type) {
         case GIVE_OUT:
-            return {
-                ...state, cards: {...state.cards, handCards: action.payload}
-            };
+            return {...state, cards: {...state.cards, handCards: action.payload}};
 
-        // case PICK_CARD:
-        //     return {...state, inv: [...state.inv, action.payload]};
+        case PUT_ON:
+            return {...state, cards: {...state.cards, inv: action.payload, handCards: state.cards.handCards.filter( (item) => item !== action.payload.id)}};
 
-        // case PUT_ON:
-        //     return {...state, playerTreasureCards: state.playerTreasureCards.filter( (item) => item !== action.payload)};
     }
     return state
 }
