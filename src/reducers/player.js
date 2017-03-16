@@ -10,7 +10,7 @@ export function Player(state = player, action) {
             return {...state, cards: {...state.cards, handCards: action.payload}};
 
         case PUT_ON:
-            return {...state, cards: {...state.cards, inv: action.payload, handCards: state.cards.handCards.filter( (item) => item !== action.payload.id)}};
+            return {...state, cards: {...state.cards, inv: action.payload, handCards: state.cards.handCards.filter( (item) => item.id !== action.payload.id)}};
 
     }
     return state
