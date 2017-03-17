@@ -36,6 +36,8 @@ class App extends Component {
                     giveOut={this.props.actions.giveOut}
                     cut={this.props.actions.cut}
                     putOn={this.props.actions.putOn}
+                    takeRace={this.props.actions.takeRace}
+                    takeKlass={this.props.actions.takeKlass}
                 />
             </div>
         )

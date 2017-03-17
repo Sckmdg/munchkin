@@ -1,7 +1,9 @@
 import {
     GIVE_OUT,
     PUT_ON,
-    CUT
+    CUT,
+    TAKE_RACE,
+    TAKE_KLASS
 } from '../constants/constants';
 
 export function giveOut(cards) {
@@ -22,6 +24,24 @@ export function putOn(card) {
     }
 }
 
+export function takeRace(card) {
+    return (dispatch) => {
+        dispatch({
+            type: TAKE_RACE,
+            payload:card
+        })
+    }
+}
+
+export function takeKlass(card) {
+    return(dispatch) => {
+        dispatch({
+            type: TAKE_KLASS,
+            payload: card
+        })
+    }
+}
+
 export function cut(card) {
     return(dispatch) => {
         dispatch({
@@ -31,4 +51,4 @@ export function cut(card) {
     }
 }
 
-export default {giveOut, putOn, cut}
+export default {giveOut, putOn, cut, takeRace, takeKlass}

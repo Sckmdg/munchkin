@@ -6,7 +6,23 @@ class Card extends Component {
     };
 
     Pick = () =>{
-        this.props.putOn(this.props.card);
+        const card = this.props.card;
+        if (this.props.card.bonus){
+            this.props.putOn(card);
+        }
+        else {
+            if (this.props.card.race !== '' ){
+                this.props.takeRace(card);
+            }
+            if (this.props.card.klass !== '' ){
+                this.props.takeKlass(card)
+            }
+            else {
+                return(
+                    <div>blabla</div>
+                )
+            }
+        }
     };
 
     render (){

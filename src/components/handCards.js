@@ -64,7 +64,12 @@ class HandCards extends React.Component {
             <div className='col-md-12'>
                 {
                     cards.Player.cards.handCards.map((card, key) =>
-                        <Card key={key} card={card} putOn={this.props.putOn}/>
+                        <Card key={key}
+                              card={card}
+                              putOn={this.props.putOn}
+                              takeRace={this.props.takeRace}
+                              takeKlass={this.props.takeKlass}
+                        />
                     )
                 }
             </div>

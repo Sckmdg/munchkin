@@ -1,6 +1,8 @@
 export const GIVE_OUT = 'GIVE_OUT';
 export const PUT_ON = 'PUT_ON';
 export const CUT = 'CUT';
+export const TAKE_RACE = 'TAKE_RACE';
+export const TAKE_KLASS = 'TALE_KLASS';
 
 export const race = {
     human: 'Человек',
