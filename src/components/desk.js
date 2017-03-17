@@ -1,5 +1,13 @@
 import React, {Component} from 'react';
 class Desk extends Component {
+    /**
+     * Here we compare player's lvl with cell lvl. It will show visually all player's lvl
+     *
+     * @param lvl - cell with lvl number
+     * @param info - players current lvl
+     * @returns {*}
+     * @constructor
+     */
     CheckLvl = (lvl, info) => {
         let currentLvl;
         if(info == lvl){

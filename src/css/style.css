@@ -35,3 +35,7 @@
 .handCards{
     border: 2px solid red;
 }
+
+.battleGround{
+    border: 1px solid;
+}

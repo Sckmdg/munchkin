@@ -10,11 +10,14 @@ import Enemies from '../components/enemies';
 import Battle from '../components/battle';
 import Player from '../components/player';
 import HandCards from '../components/handCards';
+import _ from 'lodash';
 
 class App extends Component {
 
     render() {
         const {cards, player, desk} = this.props;
+        const doors = _.shuffle(this.props.cards.Deck.filter((card) =>{return card.door == true;}));
+        const treasures = _.shuffle(this.props.cards.Deck.filter((card) =>{return card.door == false;}));
         return (
             <div className='app'>
                 <h2 className='text-center'>Munchkin</h2>
@@ -26,10 +29,14 @@ class App extends Component {
                     enemies={player}
                 />
                 <Battle
-                    cards={cards}
+                    doors={doors}
+                    treasures={treasures}
+                    turn={this.props.cards.Player.turn}
+                    playerTotal={this.props.cards.Player.stats.lvl + this.props.cards.Player.stats.bonus}
                 />
                 <Player
                     player={player}
+                    turn={this.props.actions.turn}
                 />
                 <HandCards
                     cards={cards}

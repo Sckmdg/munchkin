@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 class ItemCard extends Component {
-
+    /**
+     * ItemCard - it's treasures item's card's that can be added to players stats
+     *
+     * @returns {XML}
+     */
     render (){
         const {card} = this.props;
         return (

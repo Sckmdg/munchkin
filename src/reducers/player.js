@@ -3,7 +3,8 @@ import {
     GIVE_OUT,
     PUT_ON,
     TAKE_RACE,
-    TAKE_KLASS
+    TAKE_KLASS,
+    TURN
 } from '../constants/constants';
 
 export function Player(state = player, action) {
@@ -13,7 +14,8 @@ export function Player(state = player, action) {
 
         case PUT_ON:
             return {...state,
-                cards: {...state.cards, inv: [...state.cards.inv, action.payload],
+                cards: {...state.cards,
+                    inv: [...state.cards.inv, action.payload],
                     handCards: state.cards.handCards.filter( (item) => item.id !== action.payload.id)},
                 stats: {...state.stats, bonus: state.stats.bonus + action.payload.bonus}
             };
@@ -29,6 +31,9 @@ export function Player(state = player, action) {
                 stats: {...state.stats, klass: action.payload.klass},
                 cards: {...state.cards, handCards: state.cards.handCards.filter( (item) => item.id !== action.payload.id)}
             };
+
+        case TURN:
+            return {...state, turn: !state.turn};
     }
     return state
 }

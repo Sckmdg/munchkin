@@ -5,6 +5,7 @@ import _ from 'lodash';
 class HandCards extends React.Component {
     /**
      * Here we call function that shuffle and give out cards
+     *
      * @param props
      */
     constructor(props) {
@@ -69,6 +70,7 @@ class HandCards extends React.Component {
                               putOn={this.props.putOn}
                               takeRace={this.props.takeRace}
                               takeKlass={this.props.takeKlass}
+                              turn={this.props.cards.Player.turn}
                         />
                     )
                 }

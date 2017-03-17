@@ -3,6 +3,7 @@ export const PUT_ON = 'PUT_ON';
 export const CUT = 'CUT';
 export const TAKE_RACE = 'TAKE_RACE';
 export const TAKE_KLASS = 'TALE_KLASS';
+export const TURN = 'TURN';
 
 export const race = {
     human: {
@@ -14,7 +15,7 @@ export const race = {
     },
     elf: {
         name: 'Эльф',
-        img:img5
+        img: img5
     },
     halfing: {
         name: 'Халфинг'
@@ -54,12 +55,8 @@ export const player = {
     cards: {
         handCards: [],
         inv: []
-    }
-};
-
-export const desk = {
-    players: player,
-    turn: ''
+    },
+    turn: false
 };
 
 import img1 from '../img/cards/Selection_001.png';

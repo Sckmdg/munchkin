@@ -2,33 +2,37 @@ import React, {Component} from 'react';
 import ItemCard from './cards/itemCard';
 class Player extends Component {
     /**
-     * Here we will render info about player
-     * This info will be changing when some actions will be called
+     * Here we will render info about player and his item's card's
+     *
      * @returns {XML}
      */
     render() {
-        let shortName = this.props.player.Player;
-        let total = shortName.stats.lvl + shortName.stats.bonus;
+        let playerInfo = this.props.player.Player;
+        let total = playerInfo.stats.lvl + playerInfo.stats.bonus;
         return (
             <div className='player'>
-                <p className='text-center'>Уровень игрока {shortName.stats.lvl}</p>
+                <p className='text-center'>Уровень игрока {playerInfo.stats.lvl}</p>
                 <p className='text-center'>Все бонусы, включая уровень {total}</p>
+                <button className='btn-success btn-lg' onClick={this.props.turn}>Начать Ход</button>
+                <button className='btn-danger btn-lg col-md-offset-1'>Закончить Ход</button>
                 <div className='col-md-12'>
                     <div className='col-md-6'>
                         <div className='col-md-3 singleCard'>
-                            <p className='text-center'>Раса: {shortName.stats.race.name}</p>
-                            <img src={this.props.player.Player.stats.race.img}/>
+                            <br/>
+                            <p className='text-center'>Раса: {playerInfo.stats.race.name}</p>
+                            <img src={playerInfo.stats.race.img}/>
                         </div>
                     </div>
                     <div className='col-md-6'>
                         <div className='col-md-3 singleCard'>
-                            <p className='text-center'>Класс: {shortName.stats.klass.name}</p>
-                            <img src={this.props.player.Player.stats.klass.img}/>
+                            <br/>
+                            <p className='text-center'>Класс: {playerInfo.stats.klass.name}</p>
+                            <img src={playerInfo.stats.klass.img}/>
                         </div>
                     </div>
                 </div>
                 <div>
-                    {shortName.cards.inv.map((card, key) =>
+                    {playerInfo.cards.inv.map((card, key) =>
                         <ItemCard
                             key={key}
                             card={card}
