@@ -7,20 +7,24 @@ class Card extends Component {
 
     Pick = () =>{
         const card = this.props.card;
-        if (this.props.card.bonus){
-            this.props.putOn(card);
-        }
-        else {
-            if (this.props.card.race !== '' ){
+
+        if (card.door){
+
+            if (card.race !== '' ){
                 this.props.takeRace(card);
             }
-            if (this.props.card.klass !== '' ){
+
+            if (card.klass !== '' ){
                 this.props.takeKlass(card)
             }
+
+        }
+        else {
+            if (card.type !== '') {
+                this.props.putOn(card);
+            }
             else {
-                return(
-                    <div>blabla</div>
-                )
+                console.log('will be in future');
             }
         }
     };

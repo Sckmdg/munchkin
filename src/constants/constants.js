@@ -5,16 +5,33 @@ export const TAKE_RACE = 'TAKE_RACE';
 export const TAKE_KLASS = 'TALE_KLASS';
 
 export const race = {
-    human: 'Человек',
-    dwarf: 'Дварф',
-    elf: 'Эльф',
-    halfing: 'Халфинг'
+    human: {
+        name: 'Человек'
+    },
+    dwarf: {
+        name: 'Дварф',
+        img: img3
+    },
+    elf: {
+        name: 'Эльф',
+        img:img5
+    },
+    halfing: {
+        name: 'Халфинг'
+    }
 };
 
 export const klass = {
-    sorcer: 'Волшебник',
-    cliric: 'Клирик',
-    none: 'Без класса'
+    sorcer: {
+        name: 'Волшебник',
+    },
+    cliric: {
+        name: 'Клирик',
+        img: img6
+    },
+    none: {
+        name: 'Без класса'
+    }
 };
 
 export const itemType = {

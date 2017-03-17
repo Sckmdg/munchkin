@@ -61,7 +61,7 @@ class HandCards extends React.Component {
     render() {
         const {cards} = this.props;
         return (
-            <div className='col-md-12'>
+            <div className='col-md-12 handCards'>
                 {
                     cards.Player.cards.handCards.map((card, key) =>
                         <Card key={key}
