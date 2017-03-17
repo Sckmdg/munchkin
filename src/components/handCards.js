@@ -9,7 +9,7 @@ class HandCards extends React.Component {
      */
     constructor(props) {
         super(props);
-        const Cards = this.props.cards.HandCards;
+        const Cards = this.props.cards.Deck;
         let myShuffleCards = this.GiveOut(Cards);
         this.props.giveOut(myShuffleCards);
     }
@@ -48,7 +48,7 @@ class HandCards extends React.Component {
 
         myCards = myCards.concat(myDoors, myTreasures);
         myCards.map((sending) =>{
-            this.props.cut(sending.id);
+            this.props.cut(sending);
         });
         return myCards
     };

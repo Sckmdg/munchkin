@@ -186,7 +186,7 @@ export const initialState = [
         id: 10,
         door: false,
         img: img11,
-        bonus: 6,
+        bonus: 5,
         useOnly: klass.sorcer,
         type: itemType.oneHand,
         golds: 800
