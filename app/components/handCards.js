@@ -4,7 +4,8 @@ import _ from 'lodash';
 
 class HandCards extends Component {
   static propTypes = {
-    cards: PropTypes.object.isRequired,
+    player: PropTypes.object.isRequired,
+    deck: PropTypes.array.isRequired,
     giveOut: PropTypes.func.isRequired,
     cut: PropTypes.func.isRequired,
     takeRace: PropTypes.func.isRequired,
@@ -18,8 +19,7 @@ class HandCards extends Component {
    */
   constructor (props) {
     super(props);
-    const Cards = this.props.cards.Deck;
-    let myShuffleCards = this.GiveOut(Cards);
+    let myShuffleCards = this.GiveOut(this.props.deck);
     this.props.giveOut(myShuffleCards);
   }
 
@@ -62,17 +62,22 @@ class HandCards extends Component {
    */
 
   render () {
-    const { cards } = this.props;
+    const {
+      player,
+      takeRace,
+      putOn,
+      takeKlass
+    } = this.props;
     return (
       <div className='col-md-12 handCards'>
         {
-          cards.Player.cards.handCards.map((card, key) =>
+          player.cards.handCards.map((card, key) =>
             <Card key={key}
               card={card}
-              putOn={this.props.putOn}
-              takeRace={this.props.takeRace}
-              takeKlass={this.props.takeKlass}
-              turn={this.props.cards.Player.turn}
+              putOn={putOn}
+              takeRace={takeRace}
+              takeKlass={takeKlass}
+              turn={player.turn}
             />
           )
         }

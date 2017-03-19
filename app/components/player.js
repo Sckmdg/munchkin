@@ -11,7 +11,7 @@ class Player extends Component {
    * @returns {XML}
    */
   render () {
-    let playerInfo = this.props.player.Player;
+    let playerInfo = this.props.player;
     let total = playerInfo.stats.lvl + playerInfo.stats.bonus;
     return (
       <div className='player'>

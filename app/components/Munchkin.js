@@ -2,9 +2,6 @@
  * Composing components
  */
 import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import actions from '../actions/actions';
 import Desk from '../components/desk';
 import Enemies from '../components/enemies';
 import Battle from '../components/battle';
@@ -14,9 +11,13 @@ import _ from 'lodash';
 
 class Munchkin extends Component {
   render () {
-    const {cards, player, desk} = this.props;
-    const doors = _.shuffle(this.props.cards.Deck.filter(card => card.door === true));
-    const treasures = _.shuffle(this.props.cards.Deck.filter(card => card.door === false));
+    const {
+      turn, giveOut, putOn, cut, takeRace, takeKlass, deck, player
+    } = this.props;
+
+    const doors = _.shuffle(deck.filter(card => card.door === true));
+    const treasures = _.shuffle(deck.filter(card => card.door === false));
+    const desk = { player };
     return (
       <div className='app'>
         <h2 className='text-center'>Munchkin</h2>
@@ -24,51 +25,42 @@ class Munchkin extends Component {
           desk={desk}
         />
         <Enemies
-          cards={cards}
+          cards={deck}
           enemies={player}
         />
         <Battle
           doors={doors}
           treasures={treasures}
-          turn={this.props.cards.Player.turn}
-          playerTotal={this.props.cards.Player.stats.lvl + this.props.cards.Player.stats.bonus}
+          turn={player.turn}
+          playerTotal={player.stats.lvl + player.stats.bonus}
         />
         <Player
           player={player}
-          turn={this.props.actions.turn}
+          turn={turn}
         />
         <HandCards
-          cards={cards}
-          giveOut={this.props.actions.giveOut}
-          cut={this.props.actions.cut}
-          putOn={this.props.actions.putOn}
-          takeRace={this.props.actions.takeRace}
-          takeKlass={this.props.actions.takeKlass}
+          player={player}
+          deck={deck}
+          giveOut={giveOut}
+          cut={cut}
+          takeRace={takeRace}
+          putOn={putOn}
+          takeKlass={takeKlass}
         />
       </div>
     )
   }
 }
 
-function mapStateToProps (state) {
-  return {
-    cards: state,
-    player: state,
-    desk: state
-  }
-}
-
-function mapDispatchToProps (dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  }
-}
-
 Munchkin.propTypes = {
-  cards: PropTypes.object.isRequired,
-  player: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired,
-  desk: PropTypes.object.isRequired
+  turn: PropTypes.func.isRequired,
+  giveOut: PropTypes.func.isRequired,
+  putOn: PropTypes.func.isRequired,
+  cut: PropTypes.func.isRequired,
+  takeRace: PropTypes.func.isRequired,
+  takeKlass: PropTypes.func.isRequired,
+  deck: PropTypes.array.isRequired,
+  player: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Munchkin);
+export default Munchkin;

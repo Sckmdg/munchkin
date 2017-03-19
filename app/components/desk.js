@@ -14,13 +14,13 @@ class Desk extends Component {
   CheckLvl = (lvl, info) => {
     let currentLvl;
     if (info === lvl) {
-      currentLvl = this.props.desk.Player.stats.name
+      currentLvl = this.props.desk.player.stats.name
     }
     return currentLvl;
   };
 
   render () {
-    let statLvl = this.props.desk.Player.stats.lvl;
+    let statLvl = this.props.desk.player.stats.lvl;
     return (
       <div className='desk col-md-12'>
         <div className='col-md-1 text-center' >

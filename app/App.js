@@ -1,18 +1,16 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import configureStore from './store/configureStore'
-import { rootReducers } from './reducers'
-import Munchkin from './components/Munchkin'
-import DevTools from './containers/DevTools';
-// import config from '../config';
+import configureStore from './redux/configureStore'
+import { rootReducers } from './redux/root'
+import Munchkin from './views/MunchkinView'
+import DevTools from './redux/utils/DevTools';
 
 const isProduction = process.env.NODE_ENV === 'production';
-console.log(process.env.NODE_ENV)
 
 export class App extends React.Component {
   constructor (props) {
     super(props);
-    this.store = configureStore({}, rootReducers)
+    this.store = configureStore({}, rootReducers);
   }
 
   render () {
@@ -30,4 +28,4 @@ export class App extends React.Component {
   }
 }
 
-export default App
+export default App;
