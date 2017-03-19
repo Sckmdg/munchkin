@@ -32,7 +32,7 @@ export const player = {
   playerInv: []
 };
 
-const img0 = '1';
+import img0 from '../img/img.jpg';
 
 export const initialState = {
   doors: [

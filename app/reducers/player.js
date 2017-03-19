@@ -8,11 +8,9 @@ import {
 export function Player (state = player, action) {
   switch (action.type) {
     case GIVE_OUT:
-      return state;
-        // return {...state, playerDoorCards: action.door, playerTreasureCards: action.treasure};
+      return {...state, playerDoorCards: action.door, playerTreasureCards: action.treasure};
     case PICK_CARD:
-      return state;
-        // return{...state, playerInv: [...state.playerInv, action.payload]};
+      return {...state, playerInv: [...state.playerInv, action.payload]};
     case PUT_ON:
       console.log(action.payload.id);
       return state;

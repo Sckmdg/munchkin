@@ -1,0 +1,27 @@
+.singleCard{
+    border: 1px solid;
+    /*margin: 20px;*/
+    height: 500px;
+}
+
+.singleCard img{
+    margin: 0 0 10px -10px;
+}
+
+#left {
+    float: left;
+}
+
+#right{
+    float: right;
+}
+
+.inventory{
+    border: 1px solid;
+    position: relative;
+}
+
+.spec{
+    width: 256px;
+    height: 256px;
+}
