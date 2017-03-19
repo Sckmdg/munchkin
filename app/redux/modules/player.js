@@ -16,7 +16,7 @@ export const TURN = 'TURN';
  * Actions
  **/
 export const giveOut = createAction(GIVE_OUT, (cards) => cards);
-export const putOn = createAction(PUT_ON, (data) => data);
+export const putOn = createAction(PUT_ON, (card) => card);
 export const takeRace = createAction(TAKE_RACE, (data) => data);
 export const takeKlass = createAction(TAKE_KLASS, (data) => data);
 export const turn = createAction(TURN, (isTurn) => isTurn);
@@ -93,12 +93,12 @@ export default handleActions({
   [GIVE_OUT]: (state, { payload: cards }) => {
     return {...state, cards: {...state.cards, handCards: cards}};
   },
-  [PUT_ON]: (state, { paylod: data }) => {
+  [PUT_ON]: (state, { payload: card }) => {
     return {...state,
       cards: {...state.cards,
-        inv: [...state.cards.inv, data],
-        handCards: state.cards.handCards.filter((item) => item.id !== data.id)},
-      stats: {...state.stats, bonus: state.stats.bonus + data.bonus}
+        inv: [...state.cards.inv, card],
+        handCards: state.cards.handCards.filter((item) => item.id !== card.id)},
+      stats: {...state.stats, bonus: state.stats.bonus + card.bonus}
     };
   },
   [TAKE_RACE]: (state, { payload: data }) => {
