@@ -1,54 +1,52 @@
-import React, { Component, PropTypes } from 'react';
-import helm from '../img/helm.png';
-import sword from '../img/sword.png';
-import armour from '../img/armour.png';
-import boots from '../img/boots.png';
+import React, {Component, PropTypes} from 'react';
+import ItemCard from './cards/itemCard';
 class Player extends Component {
-    /**
-     * Here we will render info about player
-     * This info will be changing when some actions will be called
-     * @returns {XML}
-     */
+  static propTypes = {
+    player: PropTypes.object.isRequired,
+    turn: PropTypes.func.isRequired
+  };
+  /**
+   * Here we will render info about player and his item's card's
+   *
+   * @returns {XML}
+   */
   render () {
-    let total = this.props.player.Player.lvl + this.props.player.Player.bonus;
+    let playerInfo = this.props.player.Player;
+    let total = playerInfo.stats.lvl + playerInfo.stats.bonus;
     return (
       <div className='player'>
-        <p className='text-center'>Уровень игрока {total}</p>
+        <p className='text-center'>Уровень игрока {playerInfo.stats.lvl}</p>
         <p className='text-center'>Все бонусы, включая уровень {total}</p>
+        <button className='btn-success btn-lg' onClick={this.props.turn}>Начать Ход</button>
+        <button className='btn-danger btn-lg col-md-offset-1'>Закончить Ход</button>
         <div className='col-md-12'>
-          <div className='col-md-3 text-center inventory'>
-            <img src={helm} />
+          <div className='col-md-6'>
+            <div className='col-md-3 singleCard'>
+              <br />
+              <p className='text-center'>Раса: {playerInfo.stats.race.name}</p>
+              <img src={playerInfo.stats.race.img} />
+            </div>
           </div>
-          <div className='col-md-3 text-center inventory'>
-            <img src={sword} />
-            <img src={sword} />
-          </div>
-          <div className='col-md-3 text-center inventory'>
-            <img src={armour} />
-          </div>
-          <div className='col-md-3 text-center inventory'>
-            <img src={boots} />
-          </div>
-        </div>
-        <div className='col-md-6'>
-          <div className='col-md-6 spec text-center'>
-            <br />
-            <p>Раса</p>
-            <p>{this.props.player.Player.race}</p>
-          </div>
-          <div className='col-md-6 spec text-center'>
-            <br />
-            <p>Класс</p>
-            <p>{this.props.player.Player.klass}</p>
+          <div className='col-md-6'>
+            <div className='col-md-3 singleCard'>
+              <br />
+              <p className='text-center'>Класс: {playerInfo.stats.klass.name}</p>
+              <img src={playerInfo.stats.klass.img} />
+            </div>
           </div>
         </div>
+        <div>
+          {playerInfo.cards.inv.map((card, key) =>
+            <ItemCard
+              key={key}
+              card={card}
+            />
+          )}
+        </div>
+
       </div>
     )
   }
 }
 
-Player.propTypes = {
-  player: PropTypes.object.isRequired
-}
-
-export default Player;
+export default Player

@@ -1,54 +1,57 @@
 import React from 'react';
-import CardDoor from './cards/cardDoor';
-import CardTreasure from './cards/cardTreasure';
+import Card from './cards/card';
+import _ from 'lodash';
 
 class HandCards extends React.Component {
     /**
-     * Here we composing our cards in deck and send to state
+     * Here we call function that shuffle and give out cards
+     *
      * @param props
      */
     constructor(props) {
         super(props);
-        const doorCards = this.props.cards.HandCards.doors;
-        let myDoors = this.HandDoors(doorCards);
-        const treasureCards = this.props.cards.HandCards.treasures;
-        let myTreasure = this.HandTreasure(treasureCards);
-        this.props.giveOut(myDoors, myTreasure);
+        const Cards = this.props.cards.Deck;
+        let myShuffleCards = this.GiveOut(Cards);
+        this.props.giveOut(myShuffleCards);
     }
 
     /**
-     * Here we taking array from door cards and take 4 random nonrepeatable cards
-     * @param item - it's array from door cards
-     * @returns {Array} - returns 4 card array, also takes away cards from original array
+     * GiveOut - creating massive from 4 door and 4 treasure cards
+     * Giving this cards to state player and cutting from state cards
+     *
+     * doors - array of door cards from deck
+     * treasures - array of treasure cards from deck
+     *
+     * myDoors - array of 4 cards from doors
+     * myTreasures - array of 4 cards from treasures
+     * myCards - array of cards from myDoors + myTreasures
+     *
+     * @param item - original state from cards
+     * @returns {Array} - 8 cards
      * @constructor
      */
 
-    HandDoors = (item) => {
-        let myDoors = [];
-        for (let i = 0; i < 4; i++) {
-            let index = Math.floor(Math.random() * item.length);
-            let currentCard = item[index];
-            item.splice(index, 1);
-            myDoors = myDoors.concat(currentCard);
-        }
-        return myDoors
-    };
+    GiveOut = (item) => {
+        let myCards = [];
 
-    /**
-     * Here we taking array from treasure cards and take 4 random nonrepeatable cards
-     * @param item - it's array from treasure cards
-     * @returns {Array} - returns 4 card array, also takes away cards from original array
-     * @constructor
-     */
-    HandTreasure = (item) => {
-        let myTreasure = [];
-        for (let i = 0; i < 4; i++) {
-            let index = Math.floor(Math.random() * item.length);
-            let currentCard = item[index];
-            item.splice(index, 1);
-            myTreasure = myTreasure.concat(currentCard);
-        }
-        return myTreasure
+        let doors = item.filter((card) =>{
+            return card.door == true;
+        });
+        let treasures = item.filter((card) =>{
+            return card.door == false;
+        });
+
+        doors = _.shuffle(doors);
+        treasures = _.shuffle(treasures);
+
+        let myDoors = doors.slice(1, 5);
+        let myTreasures = treasures.slice(1, 5);
+
+        myCards = myCards.concat(myDoors, myTreasures);
+        myCards.map((sending) =>{
+            this.props.cut(sending);
+        });
+        return myCards
     };
 
     /**
@@ -58,18 +61,17 @@ class HandCards extends React.Component {
 
     render() {
         const {cards} = this.props;
-
         return (
-            <div className='col-md-12'>
+            <div className='col-md-12 handCards'>
                 {
-                    cards.Player.playerDoorCards.map((card, key,) =>
-                        <CardDoor key={key} card={card} pickCard={this.props.pickCard}/>
-                    )
-                }
-
-                {
-                    cards.Player.playerTreasureCards.map((card, key,) =>
-                        <CardTreasure key={key} card={card} putOn={this.props.putOn}/>
+                    cards.Player.cards.handCards.map((card, key) =>
+                        <Card key={key}
+                              card={card}
+                              putOn={this.props.putOn}
+                              takeRace={this.props.takeRace}
+                              takeKlass={this.props.takeKlass}
+                              turn={this.props.cards.Player.turn}
+                        />
                     )
                 }
             </div>

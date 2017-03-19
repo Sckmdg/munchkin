@@ -5,25 +5,45 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import actions from '../actions/actions';
-import HandCards from './handCards';
-import Player from './player';
-import 'bootstrap/dist/css/bootstrap.css';
-import '../css/style.css';
+import Desk from '../components/desk';
+import Enemies from '../components/enemies';
+import Battle from '../components/battle';
+import Player from '../components/player';
+import HandCards from '../components/handCards';
+import _ from 'lodash';
 
 class Munchkin extends Component {
   render () {
-    const { cards, player } = this.props;
+    const {cards, player, desk} = this.props;
+    const doors = _.shuffle(this.props.cards.Deck.filter(card => card.door === true));
+    const treasures = _.shuffle(this.props.cards.Deck.filter(card => card.door === false));
     return (
       <div className='app'>
         <h2 className='text-center'>Munchkin</h2>
+        <Desk
+          desk={desk}
+        />
+        <Enemies
+          cards={cards}
+          enemies={player}
+        />
+        <Battle
+          doors={doors}
+          treasures={treasures}
+          turn={this.props.cards.Player.turn}
+          playerTotal={this.props.cards.Player.stats.lvl + this.props.cards.Player.stats.bonus}
+        />
         <Player
           player={player}
+          turn={this.props.actions.turn}
         />
         <HandCards
           cards={cards}
           giveOut={this.props.actions.giveOut}
-          pickCard={this.props.actions.pickCard}
+          cut={this.props.actions.cut}
           putOn={this.props.actions.putOn}
+          takeRace={this.props.actions.takeRace}
+          takeKlass={this.props.actions.takeKlass}
         />
       </div>
     )
@@ -33,7 +53,8 @@ class Munchkin extends Component {
 function mapStateToProps (state) {
   return {
     cards: state,
-    player: state
+    player: state,
+    desk: state
   }
 }
 
@@ -46,7 +67,8 @@ function mapDispatchToProps (dispatch) {
 Munchkin.propTypes = {
   cards: PropTypes.object.isRequired,
   player: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  desk: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Munchkin)
+export default connect(mapStateToProps, mapDispatchToProps)(Munchkin);
