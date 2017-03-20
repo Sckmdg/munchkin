@@ -16,7 +16,7 @@ export class App extends React.Component {
   render () {
     return (
       <Provider store={this.store}>
-        <div>
+        <div className='container'>
           <Munchkin />
 
           { /** Embed the DevTools component only when in development. **/}
