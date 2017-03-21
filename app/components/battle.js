@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react'
-import {Segment, Card, Image} from 'semantic-ui-react'
+import {GridList, GridTile} from 'material-ui/GridList'
 
 class Battle extends Component {
     static propTypes = {
@@ -14,20 +14,38 @@ class Battle extends Component {
      * @returns {XML}
      */
     render() {
+        const styles = {
+            root: {
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'space-around',
+                width: '100%'
+            },
+            gridList: {
+                display: 'flex',
+                flexWrap: 'nowrap',
+                overflowX: 'auto',
+                width: '100%'
+            },
+            gridTile: {
+                width: '33.333%'
+            }
+        };
         let doorCard = this.props.doors[0];
         if (this.props.turn) {
             return (
-                <Segment.Group>
-                    <Segment.Group horizontal>
-                        <Segment textAlign='center'>Уровень монстра: {doorCard.lvlMstr}</Segment>
-                        <Segment textAlign='center'>Мощь игрока(ов): {this.props.playerTotal}</Segment>
-                    </Segment.Group>
-                    <Segment>
-                        <Card>
-                            <Image src={doorCard.img} alt={doorCard.name} />
-                        </Card>
-                    </Segment>
-                </Segment.Group>
+                <GridList
+                    cellHeight={210}
+                    style={styles.gridList}>
+                    <GridTile horizontal>
+                        <p>Уровень монстра: {doorCard.lvlMstr}</p>
+                        <br/>
+                        <p>Мощь игрока(ов): {this.props.playerTotal}</p>
+                    </GridTile>
+                    <GridTile>
+                        <img src={doorCard.img} alt={doorCard.name}/>
+                    </GridTile>
+                </GridList>
             )
         }
         else {

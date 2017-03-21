@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {Card, Image, Segment} from 'semantic-ui-react'
 import ItemCard from './cards/itemCard'
 class Enemy extends Component {
   /**
