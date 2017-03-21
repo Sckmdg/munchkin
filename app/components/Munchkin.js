@@ -1,12 +1,12 @@
 /**
  * Composing components
  */
-import React, {Component, PropTypes} from 'react';
-import Desk from '../components/desk';
-import Enemies from '../components/enemies';
-import Battle from '../components/battle';
-import Player from '../components/player';
-import HandCards from '../components/handCards';
+import React, {Component, PropTypes} from 'react'
+import Desk from '../components/desk'
+import Enemies from '../components/enemies'
+import Battle from '../components/battle'
+import Player from '../components/player'
+import HandCards from '../components/handCards'
 import _ from 'lodash';
 
 class Munchkin extends Component {

@@ -1,4 +1,6 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component, PropTypes} from 'react'
+import { Card, Image } from 'semantic-ui-react'
+
 class ItemCard extends Component {
   static propTypes = {
     card: PropTypes.object.isRequired
@@ -11,9 +13,9 @@ class ItemCard extends Component {
   render () {
     const { card } = this.props;
     return (
-      <div className='col-md-3 singleCard'>
-        <img src={card.img} alt={card.name} />
-      </div>
+        <Card>
+          <Image src={card.img} alt={card.name} />
+        </Card>
     );
   }
 }

@@ -7,7 +7,6 @@ import DevTools from './redux/utils/DevTools';
 import createBrowserHistory from 'history/lib/createBrowserHistory'
 import { Router, useRouterHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
-
 import configureRoutes from './routes'
 
 const isProduction = process.env.NODE_ENV === 'production';
