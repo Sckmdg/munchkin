@@ -4,7 +4,6 @@ import configureStore from './redux/configureStore'
 import { rootReducers } from './redux/root'
 import DevTools from './redux/utils/DevTools'
 import MunchkinView from './views/MunchkinView'
-import { Container } from 'semantic-ui-react'
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -17,11 +16,11 @@ export class App extends React.Component {
   render () {
     return (
       <Provider store={this.store}>
-          <Container>
+          <div>
           <MunchkinView />
           { /** Embed the DevTools component only when in development. **/}
           {!isProduction && <DevTools />}
-          </Container>
+          </div>
       </Provider>
     )
   }

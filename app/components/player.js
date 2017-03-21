@@ -1,7 +1,6 @@
 import React, {Component, PropTypes} from 'react'
 import ItemCard from './cards/itemCard'
-import {Segment} from 'semantic-ui-react'
-import {Card, Image} from 'semantic-ui-react'
+import {Card, Image, Segment} from 'semantic-ui-react'
 import {Button} from 'semantic-ui-react'
 
 class Player extends Component {
@@ -21,13 +20,12 @@ class Player extends Component {
         return (
             <Segment.Group>
                 <Segment textAlign='center'>Статы</Segment>
-                <Segment.Group>
                     <Segment.Group horizontal>
                         <Segment textAlign='center'>Уровень игрока {playerInfo.stats.lvl}</Segment>
                         <Segment textAlign='center'>Все бонусы, включая уровень {total}</Segment>
                     </Segment.Group>
                     <Segment>
-                        <Card.Group itemsPerRow={3}>
+                        <Card.Group itemsPerRow={4}>
                             <Card>
                                 <Image src={playerInfo.stats.race.img}/>
                                 <Card.Content>
@@ -59,7 +57,6 @@ class Player extends Component {
                             )}
                         </Card.Group>
                     </Segment>
-                </Segment.Group>
             </Segment.Group>
         )
     }
