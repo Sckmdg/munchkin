@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 class Enemies extends Component {
   /**
    * TODO: show other player's stats and items in small version
