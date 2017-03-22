@@ -1,9 +1,10 @@
 import React, {PropTypes} from 'react'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 export const CoreLayout = ({ children }) => (
-  <div className='app'>
+  <MuiThemeProvider>
     {children}
-  </div>
+  </MuiThemeProvider>
 );
 
 CoreLayout.propTypes = {
