@@ -11,8 +11,8 @@ export default function (store) {
     <Route component={CoreLayout} >
       <Route component={AppLayout}>
         <Route path='/' component={HomeView} />
-        <Route path='/signup' component={SignupView} />
       </Route>
+      <Route path='/signup' component={SignupView} />
       <IndexRedirect to='/' />
       <Redirect from='*' to='/' />
     </Route>
