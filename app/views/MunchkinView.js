@@ -5,7 +5,7 @@ import React, {Component, PropTypes} from 'react'
 import connectWrapper from '../redux/utils/connect'
 import { rootActions as actions } from '../redux/root'
 import Munchkin from '../components/Munchkin'
-
+import '../css/style.css'
 class MunchkinView extends Component {
   render () {
     const {

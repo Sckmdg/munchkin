@@ -1,7 +1,5 @@
 import React, {Component, PropTypes} from 'react'
 import ItemCard from './cards/itemCard'
-import {Card, Image, Segment} from 'semantic-ui-react'
-import {Button} from 'semantic-ui-react'
 
 class Player extends Component {
     static propTypes = {
@@ -18,46 +16,45 @@ class Player extends Component {
         let playerInfo = this.props.player;
         let total = playerInfo.stats.lvl + playerInfo.stats.bonus;
         return (
-            <Segment.Group>
-                <Segment textAlign='center'>Статы</Segment>
-                    <Segment.Group horizontal>
-                        <Segment textAlign='center'>Уровень игрока {playerInfo.stats.lvl}</Segment>
-                        <Segment textAlign='center'>Все бонусы, включая уровень {total}</Segment>
-                    </Segment.Group>
-                    <Segment>
-                        <Card.Group itemsPerRow={4}>
-                            <Card>
-                                <Image src={playerInfo.stats.race.img}/>
-                                <Card.Content>
-                                    <Card.Header>Раса: {playerInfo.stats.race.name}</Card.Header>
-                                </Card.Content>
-                            </Card>
-                            <Card>
-                                <Image src={playerInfo.stats.klass.img}/>
-                                <Card.Content>
-                                    <Card.Header>Класс: {playerInfo.stats.klass.name}</Card.Header>
-                                </Card.Content>
-                            </Card>
-                        </Card.Group>
-                    </Segment>
-                    <Segment textAlign='center'>
-                        <Button.Group>
-                            <Button positive onClick={this.props.turn}>Начать Ход</Button>
-                            <Button.Or />
-                            <Button negative>Закончить Ход</Button>
-                        </Button.Group>
-                    </Segment>
-                    <Segment textAlign='center'>Инвентарь <br/>
-                        <Card.Group itemsPerRow={4}>
+            <div>
+                <div>Статы</div>
+                    <div>
+                        <div>Уровень игрока {playerInfo.stats.lvl}</div>
+                        <div>Все бонусы, включая уровень {total}</div>
+                    </div>
+                    <div>
+                        <div>
+                            <div>
+                                <img src={playerInfo.stats.race.img}/>
+                                <div>
+                                    <div>Раса: {playerInfo.stats.race.name}</div>
+                                </div>
+                            </div>
+                            <div>
+                                <img src={playerInfo.stats.klass.img}/>
+                                <div>
+                                    <div>Класс: {playerInfo.stats.klass.name}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <button type='button' onClick={this.props.turn}>Начать Ход</button>
+                            <button type='button'>Закончить Ход</button>
+                        </div>
+                    </div>
+                    <div>Инвентарь <br/>
+                        <div>
                             {playerInfo.cards.inv.map((card, key) =>
                                 <ItemCard
                                     key={key}
                                     card={card}
                                 />
                             )}
-                        </Card.Group>
-                    </Segment>
-            </Segment.Group>
+                        </div>
+                    </div>
+            </div>
         )
     }
 }

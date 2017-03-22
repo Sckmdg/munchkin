@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react'
-import {Segment} from 'semantic-ui-react'
 
 class Desk extends Component {
     static propTypes = {
@@ -24,18 +23,18 @@ class Desk extends Component {
     render() {
         let statLvl = this.props.desk.player.stats.lvl;
         return (
-            <Segment.Group horizontal>
-                <Segment size='mini' textAlign='center'>1 <br/>{this.CheckLvl(1, statLvl)}</Segment>
-                <Segment size='mini' textAlign='center'>2 <br/>{this.CheckLvl(2, statLvl)}</Segment>
-                <Segment size='mini' textAlign='center'>3 <br/>{this.CheckLvl(3, statLvl)}</Segment>
-                <Segment size='mini' textAlign='center'>4 <br/>{this.CheckLvl(4, statLvl)}</Segment>
-                <Segment size='mini' textAlign='center'>5 <br/>{this.CheckLvl(5, statLvl)}</Segment>
-                <Segment size='mini' textAlign='center'>6 <br/>{this.CheckLvl(6, statLvl)}</Segment>
-                <Segment size='mini' textAlign='center'>7 <br/>{this.CheckLvl(7, statLvl)}</Segment>
-                <Segment size='mini' textAlign='center'>8 <br/>{this.CheckLvl(8, statLvl)}</Segment>
-                <Segment size='mini' textAlign='center'>9 <br/>{this.CheckLvl(9, statLvl)}</Segment>
-                <Segment size='mini' textAlign='center'>10 <br/>{this.CheckLvl(10, statLvl)}</Segment>
-            </Segment.Group>
+            <div>
+                <div>1 <br/>{this.CheckLvl(1, statLvl)}</div>
+                <div>2 <br/>{this.CheckLvl(2, statLvl)}</div>
+                <div>3 <br/>{this.CheckLvl(3, statLvl)}</div>
+                <div>4 <br/>{this.CheckLvl(4, statLvl)}</div>
+                <div>5 <br/>{this.CheckLvl(5, statLvl)}</div>
+                <div>6 <br/>{this.CheckLvl(6, statLvl)}</div>
+                <div>7 <br/>{this.CheckLvl(7, statLvl)}</div>
+                <div>8 <br/>{this.CheckLvl(8, statLvl)}</div>
+                <div>9 <br/>{this.CheckLvl(9, statLvl)}</div>
+                <div>10 <br/>{this.CheckLvl(10, statLvl)}</div>
+            </div>
         )
     }
 }
