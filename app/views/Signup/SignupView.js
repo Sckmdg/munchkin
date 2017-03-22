@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
+import SignupForm from './SignupForm'
 
 class SignupView extends Component {
   render () {
     return (
-      <div>Signup page</div>
+      <SignupForm
+      />
     )
   }
 }

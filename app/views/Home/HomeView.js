@@ -9,8 +9,11 @@ class HomeView extends Component {
     actions: PropTypes.object.isRequired
   };
   render () {
+    const {state, actions} = this.props;
     return (
       <MunchkinView
+        state={state}
+        actions={actions}
       />
     )
   }
