@@ -7,8 +7,8 @@ import Enemy from '../components/enemy'
 import Battle from '../components/battle'
 import Player from '../components/player'
 import HandCards from '../components/handCards'
+import _ from 'lodash'
 import {GridList, GridTile} from 'material-ui/GridList'
-import _ from 'lodash';
 
 class Munchkin extends Component {
   render () {
@@ -26,12 +26,11 @@ class Munchkin extends Component {
       gridList: {
         display: 'flex',
         flexWrap: 'nowrap',
-        overflowX: 'auto',
-        width: '100%'
+        width: '100%',
+        marginBottom: 40
       },
-      gridTile: {
-        width: '33.333%',
-        textAlign: 'center'
+      fullWidth: {
+        width: '100%'
       }
     };
 
@@ -39,81 +38,56 @@ class Munchkin extends Component {
     const treasures = _.shuffle(deck.filter(card => card.door === false));
     const desk = {player};
     return (
-      <div className='app container' style={styles.root}>
-        <GridList
-          cellHeight={210}
-          style={styles.gridList}>
-          <GridTile style={styles.gridTile}>
-            <Enemy
-              cards={deck}
-              enemy={player}
-            />
-          </GridTile>
-          <GridTile style={styles.gridTile}>
-            <Enemy
-              cards={deck}
-              enemy={player}
-            />
-          </GridTile>
-          <GridTile style={styles.gridTile}>
-            <Enemy
-              cards={deck}
-              enemy={player}
-            />
-          </GridTile>
+      <div className='app' style={styles.root}>
+        <GridList style={styles.gridList}>
+          <Enemy
+            cards={deck}
+            enemy={player}
+          />
+          <Enemy
+            cards={deck}
+            enemy={player}
+          />
+          <Enemy
+            cards={deck}
+            enemy={player}
+          />
         </GridList>
-        <GridList
-          cellHeight={210}
-          style={styles.gridList}>
-          <GridTile style={styles.gridTile}>
-            <Enemy
-              cards={deck}
-              enemy={player}
-            />
-          </GridTile>
-          <GridTile >
-            <Desk
-              desk={desk}
-            />
-          </GridTile>
-          <GridTile style={styles.gridTile}>
-            <Enemy
-              cards={deck}
-              enemy={player}
-            />
-          </GridTile>
+        <GridList style={styles.gridList}>
+          <Enemy
+            cards={deck}
+            enemy={player}
+          />
+          <Desk
+            desk={desk}
+          />
+          <Enemy
+            cards={deck}
+            enemy={player}
+          />
         </GridList>
         <Battle
           doors={doors}
           treasures={treasures}
           turn={player.turn}
           playerTotal={player.stats.lvl + player.stats.bonus}
+          style={styles.fullWidth}
         />
-        <GridList
-          cellHeight={210}
-          style={styles.gridList}>
-          <GridTile style={styles.gridTile}>
-            <Player
-              player={player}
-              turn={turn}
-              />
-          </GridTile>
-        </GridList>
-        <GridList
-          cellHeight={210}
-          style={styles.gridList}>
-          <GridTile style={styles.gridTile}>
-            <HandCards
-              player={player}
-              deck={deck}
-              giveOut={giveOut}
-              cut={cut}
-              takeRace={takeRace}
-              putOn={putOn}
-              takeKlass={takeKlass}
-            />
-          </GridTile>
-        </GridList>
+        <Player
+          player={player}
+          turn={turn}
+          style={styles.fullWidth}
+        />
+        <HandCards
+          player={player}
+          deck={deck}
+          giveOut={giveOut}
+          cut={cut}
+          takeRace={takeRace}
+          putOn={putOn}
+          takeKlass={takeKlass}
+          style={styles.fullWidth}
+        />
       </div>
     )
   }
