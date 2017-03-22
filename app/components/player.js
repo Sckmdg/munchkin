@@ -15,7 +15,7 @@ class Player extends Component {
    *
    * @returns {XML}
    */
-  render () {
+  render() {
     let playerInfo = this.props.player;
     let total = playerInfo.stats.lvl + playerInfo.stats.bonus;
     const styles = {
@@ -34,27 +34,25 @@ class Player extends Component {
       }
     };
     return (
-      <div>
-        <Paper style={styles.paper}>
-          <p>Статы</p>
-          <p>Уровень игрока {playerInfo.stats.lvl}</p>
-          <p>Все бонусы, включая уровень {total}</p>
-          <br />
-          <Card style={styles.card}>
-            <CardMedia
-              overlay={<CardTitle title='Раса:' subtitle={playerInfo.stats.race.name}/>}
-            >
-              <img src={playerInfo.stats.race.img}/>
-            </CardMedia>
-          </Card>
-          <Card style={styles.card}>
-            <CardMedia
-              overlay={<CardTitle title='Класс:' subtitle={playerInfo.stats.klass.name}/>}
-            >
-              <img src={playerInfo.stats.klass.img}/>
-            </CardMedia>
-          </Card>
-        </Paper>
+      <Paper style={styles.paper}>
+        <p>Статы</p>
+        <p>Уровень игрока {playerInfo.stats.lvl}</p>
+        <p>Все бонусы, включая уровень {total}</p>
+        <br />
+        <Card style={styles.card}>
+          <CardMedia
+            overlay={<CardTitle title='Раса:' subtitle={playerInfo.stats.race.name}/>}
+          >
+            <img src={playerInfo.stats.race.img}/>
+          </CardMedia>
+        </Card>
+        <Card style={styles.card}>
+          <CardMedia
+            overlay={<CardTitle title='Класс:' subtitle={playerInfo.stats.klass.name}/>}
+          >
+            <img src={playerInfo.stats.klass.img}/>
+          </CardMedia>
+        </Card>
         <Paper style={styles.paper}>
           <RaisedButton label='Начать ход' primary={true} style={styles.button} onClick={this.props.turn}/>
           <RaisedButton label='Закончить ход' secondary={true} style={styles.button}/>
@@ -68,7 +66,7 @@ class Player extends Component {
             />
           )}
         </Paper>
-      </div>
+      </Paper>
     )
   }
 }

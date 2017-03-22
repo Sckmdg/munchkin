@@ -1,4 +1,6 @@
 import { createAction, handleActions } from 'redux-actions'
+import img0 from '../../img/cards/Selection_000.png';
+import img0k from '../../img/cards/Selection_000k.png';
 import img3 from '../../img/cards/Selection_003.png';
 import img5 from '../../img/cards/Selection_005.png';
 import img6 from '../../img/cards/Selection_006.png';
@@ -34,7 +36,8 @@ export const actions = {
  **/
 export const race = {
   human: {
-    name: 'Человек'
+    name: 'Человек',
+    img: img0
   },
   dwarf: {
     name: 'Дварф',
@@ -58,7 +61,8 @@ export const klass = {
     img: img6
   },
   none: {
-    name: 'Без класса'
+    name: 'Без класса',
+    img: img0k
   }
 };
 
