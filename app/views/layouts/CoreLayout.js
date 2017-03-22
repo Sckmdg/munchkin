@@ -1,12 +1,9 @@
 import React, {PropTypes} from 'react'
-import 'semantic-ui-css/semantic.css'
-import '../../css/style.css'
-import {Container} from 'semantic-ui-react'
 
 export const CoreLayout = ({ children }) => (
-  <Container className='app'>
+  <div className='app'>
     {children}
-  </Container>
+  </div>
 );
 
 CoreLayout.propTypes = {
