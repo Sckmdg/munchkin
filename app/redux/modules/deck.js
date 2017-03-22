@@ -282,7 +282,7 @@ export const initialState = [
   * Reducers
   **/
 export default handleActions({
-  [CUT]: (state, { paylod: id }) => {
-    return state.filter((item) => item.id !== id);
+  [CUT]: (state, { payload: card }) => {
+    return state.filter((item) => item.id !== card.id);
   }
 }, initialState);
