@@ -31,7 +31,8 @@ class Munchkin extends Component {
                 width: '100%'
             },
             gridTile: {
-                width: '33.333%'
+                width: '33.333%',
+                textAlign: 'center',
             }
         };
 
@@ -39,71 +40,81 @@ class Munchkin extends Component {
         const treasures = _.shuffle(deck.filter(card => card.door === false));
         const desk = {player};
         return (
-            <div className='app container'>
-                <div style={styles.root}>
-                    <GridList
-                        cellHeight={210}
-                        style={styles.gridList}>
-                        <GridTile >
-                            <Enemy
-                                cards={deck}
-                                enemy={player}
-                            />
-                        </GridTile>
-                        <GridTile>
-                            <Enemy
-                                cards={deck}
-                                enemy={player}
-                            />
-                        </GridTile>
-                        <GridTile>
-                            <Enemy
-                                cards={deck}
-                                enemy={player}
-                            />
-                        </GridTile>
-                    </GridList>
-                    <GridList
-                        cellHeight={210}
-                        style={styles.gridList}>
-                        <GridTile >
-                            <Enemy
-                                cards={deck}
-                                enemy={player}
-                            />
-                        </GridTile>
-                        <GridTile >
-                            <Desk
-                                desk={desk}
-                            />
-                        </GridTile>
-                        <GridTile>
-                            <Enemy
-                                cards={deck}
-                                enemy={player}
-                            />
-                        </GridTile>
-                    </GridList>
-                </div>
+            <div className='app container' style={styles.root}>
+                <GridList
+                    cellHeight={210}
+                    style={styles.gridList}>
+                    <GridTile style={styles.gridTile}>
+                        <Enemy
+                            cards={deck}
+                            enemy={player}
+                        />
+                    </GridTile>
+                    <GridTile style={styles.gridTile}>
+                        <Enemy
+                            cards={deck}
+                            enemy={player}
+                        />
+                    </GridTile>
+                    <GridTile style={styles.gridTile}>
+                        <Enemy
+                            cards={deck}
+                            enemy={player}
+                        />
+                    </GridTile>
+                </GridList>
+                <GridList
+                    cellHeight={210}
+                    style={styles.gridList}>
+                    <GridTile style={styles.gridTile}>
+                        <Enemy
+                            cards={deck}
+                            enemy={player}
+                        />
+                    </GridTile>
+                    <GridTile >
+                        <Desk
+                            desk={desk}
+                        />
+                    </GridTile>
+                    <GridTile style={styles.gridTile}>
+                        <Enemy
+                            cards={deck}
+                            enemy={player}
+                        />
+                    </GridTile>
+                </GridList>
                     <Battle
                         doors={doors}
                         treasures={treasures}
                         turn={player.turn}
                         playerTotal={player.stats.lvl + player.stats.bonus}
                     />
-                <Player
-                    player={player}
-                    turn={turn}
-                />
-                <HandCards
-                    player={player}
-                    deck={deck}
-                    giveOut={giveOut}
-                    cut={cut}
-                    takeRace={takeRace}
-                    putOn={putOn}
-                    takeKlass={takeKlass}
-                />
+                <GridList
+                    cellHeight={210}
+                    style={styles.gridList}>
+                    <GridTile style={styles.gridTile}>
+                        <Player
+                            player={player}
+                            turn={turn}
+                        />
+                    </GridTile>
+                </GridList>
+                <GridList
+                    cellHeight={210}
+                    style={styles.gridList}>
+                    <GridTile style={styles.gridTile}>
+                        <HandCards
+                            player={player}
+                            deck={deck}
+                            giveOut={giveOut}
+                            cut={cut}
+                            takeRace={takeRace}
+                            putOn={putOn}
+                            takeKlass={takeKlass}
+                        />
+                    </GridTile>
+                </GridList>
             </div>
         )
     }

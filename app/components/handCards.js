@@ -1,7 +1,6 @@
 import React, {PropTypes, Component} from 'react'
 import HandCard from './cards/handCard'
 import _ from 'lodash'
-import {Card, Image, Segment} from 'semantic-ui-react'
 
 class HandCards extends Component {
     static propTypes = {
@@ -71,8 +70,8 @@ class HandCards extends Component {
             takeKlass
         } = this.props;
         return (
-            <Segment textAlign='center'>Рука <br/>
-                <Card.Group itemsPerRow={4}>
+            <div>Рука <br/>
+                <div>
                     {player.cards.handCards.map((card, key) =>
                         <HandCard
                             key={key}
@@ -82,8 +81,8 @@ class HandCards extends Component {
                             takeKlass={takeKlass}
                             turn={player.turn}/>
                     )}
-                </Card.Group>
-            </Segment>
+                </div>
+            </div>
         )
     }
 }

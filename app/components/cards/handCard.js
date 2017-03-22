@@ -1,5 +1,4 @@
 import React, {PropTypes, Component} from 'react'
-import { Card, Image } from 'semantic-ui-react'
 
 class HandCard extends Component {
     /**
@@ -47,9 +46,9 @@ class HandCard extends Component {
     render () {
         const {card} = this.props;
         return (
-            <Card onClick={this.props.turn === false ? this.Pick : null}>
-              <Image src={card.img} alt={card.name} />
-            </Card>
+            <div onClick={this.props.turn === false ? this.Pick : null}>
+              <img src={card.img} alt={card.name} />
+            </div>
         );
     }
 }

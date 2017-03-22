@@ -28,7 +28,8 @@ class Battle extends Component {
                 width: '100%'
             },
             gridTile: {
-                width: '33.333%'
+                width: '100%',
+                textAlign: 'center'
             }
         };
         let doorCard = this.props.doors[0];
@@ -37,12 +38,12 @@ class Battle extends Component {
                 <GridList
                     cellHeight={210}
                     style={styles.gridList}>
-                    <GridTile horizontal>
+                    <GridTile style={styles.gridTile}>
                         <p>Уровень монстра: {doorCard.lvlMstr}</p>
                         <br/>
                         <p>Мощь игрока(ов): {this.props.playerTotal}</p>
                     </GridTile>
-                    <GridTile>
+                    <GridTile style={styles.gridTile}>
                         <img src={doorCard.img} alt={doorCard.name}/>
                     </GridTile>
                 </GridList>

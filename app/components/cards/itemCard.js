@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react'
-import { Card, Image } from 'semantic-ui-react'
 
 class ItemCard extends Component {
   static propTypes = {
@@ -13,9 +12,9 @@ class ItemCard extends Component {
   render () {
     const { card } = this.props;
     return (
-        <Card>
-          <Image src={card.img} alt={card.name} />
-        </Card>
+        <div>
+          <img src={card.img} alt={card.name} />
+        </div>
     );
   }
 }
