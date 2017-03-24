@@ -46,7 +46,8 @@ class Enemy extends Component {
         display: 'inline-block'
       },
       popUp: {
-        width: 400
+        width: 400,
+        display: 'inline-block'
       },
       inPaper: {
         width: '100%',
