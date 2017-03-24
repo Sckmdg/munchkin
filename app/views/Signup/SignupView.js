@@ -2,15 +2,25 @@ import React, { Component, PropTypes} from 'react';
 import SignupForm from './Form/SignupForm'
 import Paper from 'material-ui/Paper';
 import Snackbar from 'material-ui/Snackbar'
-// import {
-//   isLoaded,
-//   isEmpty
-// } from 'react-redux-firebase'
+import connectWrapper from '../../redux/utils/connect'
+import { rootActions as actions } from '../../redux/root'
+import { connect } from 'react-redux';
+import {
+  firebaseConnect,
+  pathToJS
+} from 'react-redux-firebase';
 
+@firebaseConnect()
+// @connect(
+//   // Map state to props
+//   ({firebase}) => ({
+//     authError: pathToJS(firebase, 'authError')
+//   })
+// )
 class SignupView extends Component {
   static propTypes = {
-    // firebase: PropTypes.object,
-    authError: PropTypes.object
+    state: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired
   }
 
   state = {
@@ -42,6 +52,12 @@ class SignupView extends Component {
   openSnackbar = () => this.setState({ snackCanOpen: true });
 
   render () {
+    const {
+      state: {
+        firebase
+      }
+    } = this.props;
+    console.log(firebase);
     const style = {
       paddingBottom: 25,
       width: '25%',
@@ -70,4 +86,4 @@ class SignupView extends Component {
   }
 }
 
-export default SignupView;
+export default connectWrapper(actions, SignupView);
