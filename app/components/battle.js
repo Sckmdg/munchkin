@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react'
 import Paper from 'material-ui/Paper'
 import {Card, CardMedia} from 'material-ui/Card'
+import ImmutablePropTypes from 'react-immutable-proptypes'
 
 class Battle extends Component {
   static propTypes = {

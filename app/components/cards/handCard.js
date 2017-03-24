@@ -24,7 +24,6 @@ class HandCard extends Component {
    */
   Pick = () => {
     const card = this.props.card;
-
     if (card.door) {
       if (card.race !== '') {
         this.props.takeRace(card);
