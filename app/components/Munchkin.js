@@ -8,7 +8,8 @@ import Battle from '../components/battle'
 import Player from '../components/player'
 import HandCards from '../components/handCards'
 import _ from 'lodash'
-import {GridList, GridTile} from 'material-ui/GridList'
+import {GridList} from 'material-ui/GridList'
+import {fromJS} from 'immutable'
 
 class Munchkin extends Component {
   render () {
@@ -34,8 +35,8 @@ class Munchkin extends Component {
       }
     };
 
-    const doors = _.shuffle(deck.filter(card => card.door === true));
-    const treasures = _.shuffle(deck.filter(card => card.door === false));
+    const doors = fromJS(_.shuffle(deck.filter(card => card.door === true)));
+    const treasures = fromJS(_.shuffle(deck.filter(card => card.door === false)));
     const desk = {player};
     return (
       <div className='app' style={styles.root}>

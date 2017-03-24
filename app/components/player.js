@@ -3,11 +3,31 @@ import Paper from 'material-ui/Paper'
 import ItemCard from './cards/itemCard'
 import {Card, CardMedia, CardTitle} from 'material-ui/Card'
 import RaisedButton from 'material-ui/RaisedButton'
+import ImmutablePropTypes from 'react-immutable-proptypes'
 
 class Player extends Component {
   static propTypes = {
-    player: PropTypes.object.isRequired,
-    turn: PropTypes.func.isRequired
+    player: ImmutablePropTypes.listOf(
+      ImmutablePropTypes.contains({
+        stats: ImmutablePropTypes.listOf(
+          ImmutablePropTypes.contains({
+            name: PropTypes.string.isRequired,
+            gender: PropTypes.bool.isRequired,
+            lvl: PropTypes.number.isRequired,
+            bonus: PropTypes.number.isRequired,
+            race: PropTypes.string.isRequired,
+            klass: PropTypes.string.isRequired
+          })
+        ).isRequired,
+        cards: ImmutablePropTypes.listOf(
+          ImmutablePropTypes.contains({
+            handCards: PropTypes.array.isRequired,
+            inv: PropTypes.array.isRequired
+          })
+        ).isRequired,
+        turn: PropTypes.bool.isRequired
+      })
+    ).isRequired
   };
 
   /**
@@ -15,7 +35,7 @@ class Player extends Component {
    *
    * @returns {XML}
    */
-  render() {
+  render () {
     let playerInfo = this.props.player;
     let total = playerInfo.stats.lvl + playerInfo.stats.bonus;
     const styles = {

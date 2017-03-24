@@ -1,9 +1,29 @@
 import React, {Component, PropTypes} from 'react'
 import {Card, CardMedia} from 'material-ui/Card'
+import ImmutablePropTypes from 'react-immutable-proptypes'
 
 class ItemCard extends Component {
   static propTypes = {
-    card: PropTypes.object.isRequired
+    card: ImmutablePropTypes.listOf(
+      ImmutablePropTypes.contains({
+        id: PropTypes.number.isRequired,
+        door: PropTypes.bool.isRequired,
+        img: PropTypes.string.isRequired,
+        treasure: PropTypes.number.isRequired,
+        curse: PropTypes.bool.isRequired,
+        lvlUp: PropTypes.number.isRequired,
+        undead: PropTypes.bool.isRequired,
+        lvlMstr: PropTypes.number.isRequired,
+        bonusDisaster: PropTypes.string.isRequired,
+        race: PropTypes.object.isRequired,
+        klass: PropTypes.object.isRequired,
+        disaster: PropTypes.object.isRequired,
+        bonus: PropTypes.number.isRequired,
+        useOnly: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        golds: PropTypes.number.isRequired
+      })
+    ).isRequired
   };
 
   /**

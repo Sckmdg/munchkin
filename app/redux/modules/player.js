@@ -89,7 +89,7 @@ export const initialState = fromJS({
     inv: []
   },
   turn: false
-})
+});
 
 
 /*
@@ -118,6 +118,6 @@ export default handleActions({
         .updateIn(['handCards'], cards => cards.filter(entry => entry.get('id') !== data.id)));
   },
   [TURN]: (state) => {
-    return {...state, turn: !state.turn};
+    return state.merge({'turn': true});
   }
 }, initialState);

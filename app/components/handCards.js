@@ -2,11 +2,51 @@ import React, {PropTypes, Component} from 'react'
 import HandCard from './cards/handCard'
 import _ from 'lodash'
 import Paper from 'material-ui/Paper'
+import ImmutablePropTypes from 'react-immutable-proptypes'
 
 class HandCards extends Component {
   static propTypes = {
-    player: PropTypes.object.isRequired,
-    deck: PropTypes.array.isRequired,
+    player: ImmutablePropTypes.listOf(
+      ImmutablePropTypes.contains({
+        stats: ImmutablePropTypes.listOf(
+          ImmutablePropTypes.contains({
+            name: PropTypes.string.isRequired,
+            gender: PropTypes.bool.isRequired,
+            lvl: PropTypes.number.isRequired,
+            bonus: PropTypes.number.isRequired,
+            race: PropTypes.string.isRequired,
+            klass: PropTypes.string.isRequired
+          })
+        ).isRequired,
+        cards: ImmutablePropTypes.listOf(
+          ImmutablePropTypes.contains({
+            handCards: PropTypes.array.isRequired,
+            inv: PropTypes.array.isRequired
+          })
+        ).isRequired,
+        turn: PropTypes.bool.isRequired
+      })
+    ).isRequired,
+    deck: ImmutablePropTypes.listOf(
+      ImmutablePropTypes.contains({
+        id: PropTypes.number.isRequired,
+        door: PropTypes.bool.isRequired,
+        img: PropTypes.string.isRequired,
+        treasure: PropTypes.number.isRequired,
+        curse: PropTypes.bool.isRequired,
+        lvlUp: PropTypes.number.isRequired,
+        undead: PropTypes.bool.isRequired,
+        lvlMstr: PropTypes.number.isRequired,
+        bonusDisaster: PropTypes.string.isRequired,
+        race: PropTypes.object.isRequired,
+        klass: PropTypes.object.isRequired,
+        disaster: PropTypes.object.isRequired,
+        bonus: PropTypes.number.isRequired,
+        useOnly: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        golds: PropTypes.number.isRequired
+      })
+    ).isRequired,
     giveOut: PropTypes.func.isRequired,
     cut: PropTypes.func.isRequired,
     takeRace: PropTypes.func.isRequired,
@@ -63,7 +103,7 @@ class HandCards extends Component {
    * @returns {XML}
    */
 
-  render () {
+  render() {
     const {
       player,
       takeRace,
@@ -87,7 +127,7 @@ class HandCards extends Component {
             putOn={putOn}
             takeRace={takeRace}
             takeKlass={takeKlass}
-            turn={player.turn} />
+            turn={player.turn}/>
         )}
       </Paper>
     )

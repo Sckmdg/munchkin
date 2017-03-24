@@ -5,7 +5,22 @@ import ImmutablePropTypes from 'react-immutable-proptypes'
 
 class Battle extends Component {
   static propTypes = {
-    doors: PropTypes.array.isRequired,
+    doors: ImmutablePropTypes.listOf(
+      ImmutablePropTypes.contains({
+        id: PropTypes.number.isRequired,
+        door: PropTypes.bool.isRequired,
+        img: PropTypes.string.isRequired,
+        treasure: PropTypes.number.isRequired,
+        curse: PropTypes.bool.isRequired,
+        lvlUp: PropTypes.number.isRequired,
+        undead: PropTypes.bool.isRequired,
+        lvlMstr: PropTypes.number.isRequired,
+        bonusDisaster: PropTypes.string.isRequired,
+        // race: PropTypes.object.isRequired,
+        // klass: PropTypes.object.isRequired,
+        // disaster: PropTypes.object.isRequired
+      })
+    ).isRequired,
     playerTotal: PropTypes.number.isRequired,
     turn: PropTypes.bool.isRequired
   };
@@ -31,7 +46,8 @@ class Battle extends Component {
      * Because of unknown reason i can't set styles.paper and styles.card
      * It ruins styles
      */
-    let doorCard = this.props.doors[0];
+    const doors = this.props.doors.toJS();
+    const doorCard = doors[0];
     if (this.props.turn) {
       return (
         <Paper style={styles}>
@@ -39,7 +55,7 @@ class Battle extends Component {
           <p>Мощь игрока(ов): {this.props.playerTotal}</p>
           <Card style={cardStyle}>
             <CardMedia>
-              <img src={doorCard.img} alt={doorCard.name} />
+              <img src={doorCard.img} alt={doorCard.name}/>
             </CardMedia>
           </Card>
         </Paper>

@@ -1,9 +1,30 @@
 import React, {Component, PropTypes} from 'react'
 import Paper from 'material-ui/Paper'
+import ImmutablePropTypes from 'react-immutable-proptypes'
 
 class Desk extends Component {
   static propTypes = {
-    desk: PropTypes.object.isRequired
+    desk: ImmutablePropTypes.listOf(
+      ImmutablePropTypes.contains({
+        stats: ImmutablePropTypes.listOf(
+          ImmutablePropTypes.contains({
+            name: PropTypes.string.isRequired,
+            gender: PropTypes.bool.isRequired,
+            lvl: PropTypes.number.isRequired,
+            bonus: PropTypes.number.isRequired,
+            race: PropTypes.string.isRequired,
+            klass: PropTypes.string.isRequired
+          })
+        ).isRequired,
+        cards: ImmutablePropTypes.listOf(
+          ImmutablePropTypes.contains({
+            handCards: PropTypes.array.isRequired,
+            inv: PropTypes.array.isRequired
+          })
+        ).isRequired,
+        turn: PropTypes.bool.isRequired
+      })
+    ).isRequired
   };
   /**
    * Here we compare player's lvl with cell lvl. It will show visually all player's lvl

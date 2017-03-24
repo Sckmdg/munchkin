@@ -77,7 +77,7 @@ export const itemType = {
   boots: 'Обувка'
 };
 
-export const player = {
+export const player = fromJS({
   stats: {
     name: 'Rust',
     gender: true,
@@ -91,11 +91,9 @@ export const player = {
     inv: []
   },
   turn: false
-};
+});
 
-//export const initialState = fromJS([
-export const initialState = [
-
+export const initialState = fromJS([
   {
     id: 0,
     door: true,
@@ -280,15 +278,13 @@ export const initialState = [
     klass: '',
     disaster: 'something'
   }
-];
-//]);
+]);
 
 /*
  * Reducers
  **/
 export default handleActions({
   [CUT]: (state, {payload: card}) => {
-    //return state.updateIn(['state'], state => state.filter(entry => entry.get('id') !== card.id));
-    return state.filter((item) => item.id !== card.id);
+    return state.filter(entry => entry.get('id') !== card.id);
   }
 }, initialState);
