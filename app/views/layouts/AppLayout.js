@@ -3,7 +3,6 @@ import Paper from 'material-ui/Paper';
 
 function AppLayout ({ children }) {
   const style = {
-    height: 1000,
     width: '95%',
     margin: 20,
     textAlign: 'center',

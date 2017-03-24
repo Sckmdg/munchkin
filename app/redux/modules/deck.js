@@ -1,5 +1,9 @@
-import { createAction, handleActions } from 'redux-actions'
+import {createAction, handleActions} from 'redux-actions'
+import {fromJS} from 'immutable';
+
 //TODO move to api
+import img0 from '../../img/cards/Selection_000.png';
+import img0k from '../../img/cards/Selection_000k.png';
 import img1 from '../../img/cards/Selection_001.png';
 import img2 from '../../img/cards/Selection_002.png';
 import img3 from '../../img/cards/Selection_003.png';
@@ -35,7 +39,8 @@ export const actions = {
  **/
 export const race = {
   human: {
-    name: 'Человек'
+    name: 'Человек',
+    img: img0
   },
   dwarf: {
     name: 'Дварф',
@@ -59,7 +64,8 @@ export const klass = {
     img: img6
   },
   none: {
-    name: 'Без класса'
+    name: 'Без класса',
+    img: img0k
   }
 };
 
@@ -71,7 +77,7 @@ export const itemType = {
   boots: 'Обувка'
 };
 
-export const player = {
+export const player = fromJS({
   stats: {
     name: 'Rust',
     gender: true,
@@ -85,9 +91,9 @@ export const player = {
     inv: []
   },
   turn: false
-};
+});
 
-export const initialState = [
+export const initialState = fromJS([
   {
     id: 0,
     door: true,
@@ -272,13 +278,13 @@ export const initialState = [
     klass: '',
     disaster: 'something'
   }
-];
+]);
 
- /*
-  * Reducers
-  **/
+/*
+ * Reducers
+ **/
 export default handleActions({
-  [CUT]: (state, { paylod: id }) => {
-    return state.filter((item) => item.id !== id);
+  [CUT]: (state, {payload: card}) => {
+    return state.filter(entry => entry.get('id') !== card.id);
   }
 }, initialState);

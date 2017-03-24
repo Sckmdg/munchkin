@@ -9,10 +9,6 @@ import Munchkin from '../components/Munchkin'
 class MunchkinView extends Component {
   render () {
     const {
-      state: {
-        deck,
-        player
-      },
       actions: {
         turn,
         giveOut,
@@ -23,6 +19,8 @@ class MunchkinView extends Component {
       }
     } = this.props;
 
+    const deck = this.props.state.deck.toJS();
+    const player = this.props.state.player.toJS();
     return (
       <Munchkin
         deck={deck}

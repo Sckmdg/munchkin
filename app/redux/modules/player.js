@@ -1,7 +1,10 @@
-import { createAction, handleActions } from 'redux-actions'
+import {createAction, handleActions} from 'redux-actions'
+import img0 from '../../img/cards/Selection_000.png';
+import img0k from '../../img/cards/Selection_000k.png';
 import img3 from '../../img/cards/Selection_003.png';
 import img5 from '../../img/cards/Selection_005.png';
 import img6 from '../../img/cards/Selection_006.png';
+import {fromJS} from 'immutable';
 
 /*
  * Constants
@@ -34,7 +37,8 @@ export const actions = {
  **/
 export const race = {
   human: {
-    name: 'Человек'
+    name: 'Человек',
+    img: img0
   },
   dwarf: {
     name: 'Дварф',
@@ -58,7 +62,8 @@ export const klass = {
     img: img6
   },
   none: {
-    name: 'Без класса'
+    name: 'Без класса',
+    img: img0k
   }
 };
 
@@ -70,7 +75,7 @@ export const itemType = {
   boots: 'Обувка'
 };
 
-export const initialState = {
+export const initialState = fromJS({
   stats: {
     name: 'Rust',
     gender: true,
@@ -84,36 +89,35 @@ export const initialState = {
     inv: []
   },
   turn: false
-};
+});
+
 
 /*
  * Reducers
  **/
 export default handleActions({
-  [GIVE_OUT]: (state, { payload: cards }) => {
-    return {...state, cards: {...state.cards, handCards: cards}};
+  [GIVE_OUT]: (state, {payload: cards}) => {
+    return state.updateIn(['cards', 'handCards'], handCards => handCards.merge(cards));
   },
-  [PUT_ON]: (state, { payload: card }) => {
-    return {...state,
-      cards: {...state.cards,
-        inv: [...state.cards.inv, card],
-        handCards: state.cards.handCards.filter((item) => item.id !== card.id)},
-      stats: {...state.stats, bonus: state.stats.bonus + card.bonus}
-    };
+  [PUT_ON]: (state, {payload: card}) => {
+    return state.updateIn(['cards'], cards => cards
+      .updateIn(['inv'], inv => inv.push(card))
+      .updateIn(['handCards'], cards => cards.filter(entry => entry.get('id') !== card.id)))
+      .updateIn(['stats', 'bonus'], bonus => bonus + card.bonus);
   },
-  [TAKE_RACE]: (state, { payload: data }) => {
-    return {...state,
-      stats: {...state.stats, race: data.race},
-      cards: {...state.cards, handCards: state.cards.handCards.filter((item) => item.id !== data.id)}
-    };
+  [TAKE_RACE]: (state, {payload: data}) => {
+    return state
+      .updateIn(['stats', 'race'], race => race.merge(data.race))
+      .updateIn(['cards'], cards => cards
+        .updateIn(['handCards'], cards => cards.filter(entry => entry.get('id') !== data.id)));
   },
-  [TAKE_KLASS]: (state, { payload: data }) => {
-    return {...state,
-      stats: {...state.stats, klass: data.klass},
-      cards: {...state.cards, handCards: state.cards.handCards.filter((item) => item.id !== data.id)}
-    };
+  [TAKE_KLASS]: (state, {payload: data}) => {
+    return state
+      .updateIn(['stats', 'klass'], klass => klass.merge(data.klass))
+      .updateIn(['cards'], cards => cards
+        .updateIn(['handCards'], cards => cards.filter(entry => entry.get('id') !== data.id)));
   },
-  [TURN]: (state, { payload: data }) => {
-    return {...state, turn: !state.turn};
+  [TURN]: (state) => {
+    return state.merge({'turn': true});
   }
 }, initialState);
