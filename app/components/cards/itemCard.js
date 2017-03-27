@@ -4,8 +4,8 @@ import ImmutablePropTypes from 'react-immutable-proptypes'
 
 class ItemCard extends Component {
   static propTypes = {
-    card: ImmutablePropTypes.listOf(
-      ImmutablePropTypes.contains({
+    card: ImmutablePropTypes.mapOf(
+      ImmutablePropTypes.mapContains({
         id: PropTypes.number.isRequired,
         door: PropTypes.bool.isRequired,
         img: PropTypes.string.isRequired,

@@ -5,54 +5,54 @@ import Paper from 'material-ui/Paper'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 
 class HandCards extends Component {
-  static propTypes = {
-    player: ImmutablePropTypes.listOf(
-      ImmutablePropTypes.contains({
-        stats: ImmutablePropTypes.listOf(
-          ImmutablePropTypes.contains({
-            name: PropTypes.string.isRequired,
-            gender: PropTypes.bool.isRequired,
-            lvl: PropTypes.number.isRequired,
-            bonus: PropTypes.number.isRequired,
-            race: PropTypes.string.isRequired,
-            klass: PropTypes.string.isRequired
-          })
-        ).isRequired,
-        cards: ImmutablePropTypes.listOf(
-          ImmutablePropTypes.contains({
-            handCards: PropTypes.array.isRequired,
-            inv: PropTypes.array.isRequired
-          })
-        ).isRequired,
-        turn: PropTypes.bool.isRequired
-      })
-    ).isRequired,
-    deck: ImmutablePropTypes.listOf(
-      ImmutablePropTypes.contains({
-        id: PropTypes.number.isRequired,
-        door: PropTypes.bool.isRequired,
-        img: PropTypes.string.isRequired,
-        treasure: PropTypes.number.isRequired,
-        curse: PropTypes.bool.isRequired,
-        lvlUp: PropTypes.number.isRequired,
-        undead: PropTypes.bool.isRequired,
-        lvlMstr: PropTypes.number.isRequired,
-        bonusDisaster: PropTypes.string.isRequired,
-        race: PropTypes.object.isRequired,
-        klass: PropTypes.object.isRequired,
-        disaster: PropTypes.object.isRequired,
-        bonus: PropTypes.number.isRequired,
-        useOnly: PropTypes.string.isRequired,
-        type: PropTypes.string.isRequired,
-        golds: PropTypes.number.isRequired
-      })
-    ).isRequired,
-    giveOut: PropTypes.func.isRequired,
-    cut: PropTypes.func.isRequired,
-    takeRace: PropTypes.func.isRequired,
-    putOn: PropTypes.func.isRequired,
-    takeKlass: PropTypes.func.isRequired
-  };
+  // static propTypes = {
+  //   player: ImmutablePropTypes.mapOf(
+  //     ImmutablePropTypes.mapContains({
+  //       stats: ImmutablePropTypes.mapOf(
+  //         ImmutablePropTypes.mapContains({
+  //           name: PropTypes.string.isRequired,
+  //           gender: PropTypes.bool.isRequired,
+  //           lvl: PropTypes.number.isRequired,
+  //           bonus: PropTypes.number.isRequired,
+  //           race: PropTypes.string.isRequired,
+  //           klass: PropTypes.string.isRequired
+  //         })
+  //       ),
+  //       cards: ImmutablePropTypes.listOf(
+  //         ImmutablePropTypes.contains({
+  //           handCards: PropTypes.array.isRequired,
+  //           inv: PropTypes.array.isRequired
+  //         })
+  //       ).isRequired,
+  //       turn: PropTypes.bool.isRequired
+  //     })
+  //   ),
+  //   deck: ImmutablePropTypes.mapOf(
+  //     ImmutablePropTypes.mapContains({
+  //       id: PropTypes.number.isRequired,
+  //       door: PropTypes.bool.isRequired,
+  //       img: PropTypes.string.isRequired,
+  //       treasure: PropTypes.number.isRequired,
+  //       curse: PropTypes.bool.isRequired,
+  //       lvlUp: PropTypes.number.isRequired,
+  //       undead: PropTypes.bool.isRequired,
+  //       lvlMstr: PropTypes.number.isRequired,
+  //       bonusDisaster: PropTypes.string.isRequired,
+  //       race: PropTypes.object.isRequired,
+  //       klass: PropTypes.object.isRequired,
+  //       disaster: PropTypes.object.isRequired,
+  //       bonus: PropTypes.number.isRequired,
+  //       useOnly: PropTypes.string.isRequired,
+  //       type: PropTypes.string.isRequired,
+  //       golds: PropTypes.number.isRequired
+  //     })
+  //   ),
+  //   giveOut: PropTypes.func.isRequired,
+  //   cut: PropTypes.func.isRequired,
+  //   takeRace: PropTypes.func.isRequired,
+  //   putOn: PropTypes.func.isRequired,
+  //   takeKlass: PropTypes.func.isRequired
+  // };
 
   /**
    * Here we call function that shuffle and give out cards
@@ -103,13 +103,15 @@ class HandCards extends Component {
    * @returns {XML}
    */
 
-  render() {
+  render () {
     const {
       player,
       takeRace,
       putOn,
       takeKlass
     } = this.props;
+
+    const playerInfo = player.toJS();
 
     const styles = {
       width: '100%',
@@ -120,14 +122,14 @@ class HandCards extends Component {
     return (
       <Paper style={styles}>
         <p>Рука</p>
-        {player.cards.handCards.map((card, key) =>
+        {playerInfo.cards.handCards.map((card, key) =>
           <HandCard
             key={key}
             card={card}
             putOn={putOn}
             takeRace={takeRace}
             takeKlass={takeKlass}
-            turn={player.turn}/>
+            turn={playerInfo.turn} />
         )}
       </Paper>
     )

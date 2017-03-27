@@ -10,6 +10,7 @@ import HandCards from '../components/handCards'
 import _ from 'lodash'
 import {GridList} from 'material-ui/GridList'
 import {fromJS} from 'immutable'
+import ImmutablePropTypes from 'react-immutable-proptypes'
 
 class Munchkin extends Component {
   render () {
@@ -35,9 +36,10 @@ class Munchkin extends Component {
       }
     };
 
-    const doors = fromJS(_.shuffle(deck.filter(card => card.door === true)));
-    const treasures = fromJS(_.shuffle(deck.filter(card => card.door === false)));
-    const desk = {player};
+    // const doors = fromJS(_.shuffle(deck.filter(card => card.door === true)));
+    // const treasures = fromJS(_.shuffle(deck.filter(card => card.door === false)));
+    const doors = _.shuffle(deck.filter(card => card.door === true));
+    const treasures = _.shuffle(deck.filter(card => card.door === false));
     return (
       <div className='app' style={styles.root}>
         <GridList style={styles.gridList}>
@@ -60,7 +62,7 @@ class Munchkin extends Component {
             enemy={player}
           />
           <Desk
-            desk={desk}
+            player={player}
           />
           <Enemy
             cards={deck}
@@ -70,8 +72,7 @@ class Munchkin extends Component {
         <Battle
           doors={doors}
           treasures={treasures}
-          turn={player.turn}
-          playerTotal={player.stats.lvl + player.stats.bonus}
+          player={player}
           style={styles.fullWidth}
         />
         <Player
@@ -101,7 +102,7 @@ Munchkin.propTypes = {
   cut: PropTypes.func.isRequired,
   takeRace: PropTypes.func.isRequired,
   takeKlass: PropTypes.func.isRequired,
-  deck: PropTypes.array.isRequired,
+  //deck: ImmutablePropTypes.array.isRequired,
   player: PropTypes.object.isRequired
 };
 

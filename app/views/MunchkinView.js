@@ -20,7 +20,7 @@ class MunchkinView extends Component {
     } = this.props;
 
     const deck = this.props.state.deck.toJS();
-    const player = this.props.state.player.toJS();
+    const player = this.props.state.player;
     return (
       <Munchkin
         deck={deck}

@@ -4,26 +4,44 @@ import {Card, CardMedia} from 'material-ui/Card'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 
 class Battle extends Component {
-  static propTypes = {
-    doors: ImmutablePropTypes.listOf(
-      ImmutablePropTypes.contains({
-        id: PropTypes.number.isRequired,
-        door: PropTypes.bool.isRequired,
-        img: PropTypes.string.isRequired,
-        treasure: PropTypes.number.isRequired,
-        curse: PropTypes.bool.isRequired,
-        lvlUp: PropTypes.number.isRequired,
-        undead: PropTypes.bool.isRequired,
-        lvlMstr: PropTypes.number.isRequired,
-        bonusDisaster: PropTypes.string.isRequired,
-        // race: PropTypes.object.isRequired,
-        // klass: PropTypes.object.isRequired,
-        // disaster: PropTypes.object.isRequired
-      })
-    ).isRequired,
-    playerTotal: PropTypes.number.isRequired,
-    turn: PropTypes.bool.isRequired
-  };
+  // static propTypes = {
+  //   doors: ImmutablePropTypes.listOf(
+  //     ImmutablePropTypes.contains({
+  //       id: PropTypes.number.isRequired,
+  //       door: PropTypes.bool.isRequired,
+  //       img: PropTypes.string.isRequired,
+  //       treasure: PropTypes.number.isRequired,
+  //       curse: PropTypes.bool.isRequired,
+  //       lvlUp: PropTypes.number.isRequired,
+  //       undead: PropTypes.bool.isRequired,
+  //       lvlMstr: PropTypes.number.isRequired,
+  //       bonusDisaster: PropTypes.string.isRequired,
+  //       race: PropTypes.object.isRequired,
+  //       klass: PropTypes.object.isRequired,
+  //       disaster: PropTypes.object.isRequired
+  //     })
+  //   ).isRequired,
+  //   player: ImmutablePropTypes.mapOf(
+  //     ImmutablePropTypes.mapContains({
+  //       stats: ImmutablePropTypes.mapOf(
+  //         ImmutablePropTypes.mapContains({
+  //           name: PropTypes.string.isRequired,
+  //           gender: PropTypes.bool.isRequired,
+  //           lvl: PropTypes.number.isRequired,
+  //           bonus: PropTypes.number.isRequired,
+  //           race: PropTypes.string.isRequired,
+  //           klass: PropTypes.string.isRequired,
+  //           turn: PropTypes.bool.isRequired
+  //         })),
+  //       cards: ImmutablePropTypes.mapOf(
+  //         ImmutablePropTypes.mapContains({
+  //           handCards: PropTypes.array.isRequired,
+  //           inv: PropTypes.array.isRequired
+  //         })
+  //       ).isRequired
+  //     })
+  //   ).isRequired
+  // };
 
   /**
    * Here we checking what phase of turn now and giving door card to player
@@ -42,20 +60,20 @@ class Battle extends Component {
       width: 250,
       display: 'inline-block'
     };
-    /**
-     * Because of unknown reason i can't set styles.paper and styles.card
-     * It ruins styles
-     */
-    const doors = this.props.doors.toJS();
+    const doors = this.props.doors;
     const doorCard = doors[0];
-    if (this.props.turn) {
+    const playerInfo = this.props.player.toJS();
+    const total = playerInfo.stats.lvl + playerInfo.stats.bonus;
+    const turn = playerInfo.turn;
+
+    if (turn) {
       return (
         <Paper style={styles}>
           <p>Уровень монстра: {doorCard.lvlMstr}</p>
-          <p>Мощь игрока(ов): {this.props.playerTotal}</p>
+          <p>Мощь игрока(ов): {total}</p>
           <Card style={cardStyle}>
             <CardMedia>
-              <img src={doorCard.img} alt={doorCard.name}/>
+              <img src={doorCard.img} alt={doorCard.name} />
             </CardMedia>
           </Card>
         </Paper>
